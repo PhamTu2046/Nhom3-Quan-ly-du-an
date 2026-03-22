@@ -10,6 +10,7 @@ require_once './controllers/ProductController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
+require_once './models/CategoryModel.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -20,5 +21,18 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
     '/'=>(new ProductController())->Home(),
+
+    'list-product' => (new ProductController())->index(),
+    'add-product' => (new ProductController())->create(),
+    'store-product' => (new ProductController())->store(),
+
+    'edit-product' => (new ProductController())->edit(),
+    'update-product' => (new ProductController())->update(),
+
+    'delete-product' => (new ProductController())->delete(),
+
+    'trash-product' => (new ProductController())->trash(),
+    'restore-product' => (new ProductController())->restore(),
+    'force-delete-product' => (new ProductController())->forceDelete(),
 
 };
