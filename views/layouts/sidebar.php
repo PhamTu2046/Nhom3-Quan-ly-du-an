@@ -69,9 +69,9 @@
 
             <!-- Đăng xuất -->
             <li class="nav-item">
-                <a href="#" class="nav-link text-danger">
-                    🚪 Đăng xuất
-                </a>
+                <a href="index.php?act=logout" class="nav-link text-danger">
+    🚪 Đăng xuất
+</a>
             </li>
 
         </ul>
