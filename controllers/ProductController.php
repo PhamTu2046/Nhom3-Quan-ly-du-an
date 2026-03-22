@@ -13,12 +13,10 @@ class ProductController
     }
 
     public function Home()
-    {
-        $title = "Đây là trang chủ nhé hahaa";
-        $thoiTiet = "Hôm nay trời có vẻ là mưa";
-        header("Location: index.php?act=list-product");
-        exit;
-    }
+{
+    $products = $this->modelProduct->getAll();
+    require './views/client/home.php'; // hoặc view bạn muốn
+}
 
 
     public function index() {
