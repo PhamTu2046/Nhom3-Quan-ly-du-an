@@ -1,24 +1,67 @@
-<?php 
-// Require toàn bộ các file khai báo môi trường, thực thi,...(không require view)
+<?php
+// ===== REQUIRE =====
+require_once './commons/env.php';
+require_once './commons/function.php';
 
-// Require file Common
-require_once './commons/env.php'; // Khai báo biến môi trường
-require_once './commons/function.php'; // Hàm hỗ trợ
-
-// Require toàn bộ file Controllers
 require_once './controllers/ProductController.php';
+require_once './controllers/AuthController.php';
 
-// Require toàn bộ file Models
 require_once './models/ProductModel.php';
+require_once './models/CategoryModel.php';
+require_once './models/UserModel.php';
 
-// Route
-$act = $_GET['act'] ?? '/';
+// ===== SESSION =====
+session_start();
 
+// ===== LẤY ACT =====
+$act = $_GET['act'] ?? 'login';
 
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
+// ===== ROUTE KHÔNG CẦN LOGIN =====
+$publicRoutes = ['login', 'check-login', 'register', 'check-register'];
 
+// ===== CHẶN CHƯA LOGIN =====
+if (!isset($_SESSION['user']) && !in_array($act, $publicRoutes)) {
+    header('Location: index.php?act=login');
+    exit();
+}
+
+// ===== ĐÃ LOGIN → KHÔNG CHO VÀO LOGIN/REGISTER =====
+if (isset($_SESSION['user']) && in_array($act, ['login', 'register'])) {
+    header('Location: index.php?act=list-product');
+    exit();
+}
+
+// ===== ROUTE =====
 match ($act) {
-    // Trang chủ
-    '/'=>(new ProductController())->Home(),
 
+    // ===== AUTH =====
+    'login' => (new AuthController())->showLogin(),
+    'check-login' => (new AuthController())->login(),
+    'register' => (new AuthController())->showRegister(),
+    'check-register' => (new AuthController())->register(),
+    'logout' => (new AuthController())->logout(),
+
+    // ===== TRANG CHÍNH =====
+    '/' => (new ProductController())->Home(),
+    'home' => (new ProductController())->Home(),
+
+    // ===== ADMIN =====
+    'admin' => (new ProductController())->index(),
+
+    // ===== PRODUCT =====
+    'list-product' => (new ProductController())->index(),
+    'add-product' => (new ProductController())->create(),
+    'store-product' => (new ProductController())->store(),
+
+    'edit-product' => (new ProductController())->edit(),
+    'update-product' => (new ProductController())->update(),
+
+    'delete-product' => (new ProductController())->delete(),
+
+    'trash-product' => (new ProductController())->trash(),
+    'restore-product' => (new ProductController())->restore(),
+    'force-delete-product' => (new ProductController())->forceDelete(),
+
+    // ===== DEFAULT (TRÁNH LỖI MATCH) =====
+    default => (new AuthController())->showLogin(),
 };
