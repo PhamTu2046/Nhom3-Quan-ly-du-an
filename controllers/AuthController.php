@@ -20,7 +20,9 @@ class AuthController
             $user = $userModel->getUserByUsernameAndPassword($username, $password);
 
             if ($user) {
+                // Lưu thông tin user vào session
                 $_SESSION['user'] = $user;
+                $_SESSION['name'] = $user['name'];
 
                 // Phân quyền
                 if ($user['role'] === 'admin') {

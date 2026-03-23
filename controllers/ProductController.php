@@ -15,9 +15,13 @@ class ProductController
     public function Home()
 {
     $products = $this->modelProduct->getAll();
+    $products = array_slice($products, 0, 3); // chỉ lấy 3 món nổi bật
     require './views/client/home.php'; // hoặc view bạn muốn
 }
 
+    public function gioithieu() {
+        require './views/client/gioithieu.php';
+    }
 
     public function index() {
         $products = $this->modelProduct->getAll();

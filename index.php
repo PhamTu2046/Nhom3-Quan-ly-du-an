@@ -18,7 +18,7 @@ session_start();
 $act = $_GET['act'] ?? 'login';
 
 // ===== ROUTE KHÔNG CẦN LOGIN =====
-$publicRoutes = ['login', 'check-login', 'register', 'check-register'];
+$publicRoutes = ['login', 'check-login', 'register', 'check-register', 'home', 'gioithieu'];
 
 // ===== CHẶN CHƯA LOGIN =====
 if (!isset($_SESSION['user']) && !in_array($act, $publicRoutes)) {
@@ -45,6 +45,7 @@ match ($act) {
     // ===== TRANG CHÍNH =====
     '/' => (new ProductController())->Home(),
     'home' => (new ProductController())->Home(),
+    'gioithieu' => (new ProductController())->gioithieu(),
 
     // ===== ADMIN =====
     'admin' => (new ProductController())->index(),
