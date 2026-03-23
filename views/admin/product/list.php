@@ -1,4 +1,4 @@
-<?php require './views/layouts/header.php'; ?>
+<?php require './views/admin/layouts/header.php'; ?>
 
 <h2 class="mb-3">Danh sách món ăn</h2>
 
@@ -38,4 +38,4 @@
     <?php endforeach; ?>
 </table>
 
-<?php require './views/layouts/footer.php'; ?>
+<?php require './views/admin/layouts/footer.php'; ?>

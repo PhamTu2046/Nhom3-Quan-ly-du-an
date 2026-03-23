@@ -1,4 +1,4 @@
-<?php require './views/layouts/header.php'; ?>
+<?php require './views/admin/layouts/header.php'; ?>
 
 <h2 class="mb-3">Thêm danh mục</h2>
 
@@ -17,4 +17,4 @@
     <button type="submit" class="btn btn-primary">Lưu</button>
 </form>
 
-<?php require './views/layouts/footer.php'; ?>
+<?php require './views/admin/layouts/footer.php'; ?>

@@ -1,4 +1,4 @@
-<?php require './views/layouts/header.php'; ?>
+<?php require './views/admin/layouts/header.php'; ?>
 
 <h2 class="mb-3">Thùng rác (Món đã xóa)</h2>
 
@@ -54,4 +54,4 @@
 
 <?php endif; ?>
 
-<?php require './views/layouts/footer.php'; ?>
+<?php require './views/admin/layouts/footer.php'; ?>

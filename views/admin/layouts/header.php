@@ -14,4 +14,4 @@
 </head>
 <body>
 
-<?php require './views/layouts/sidebar.php'; ?>
+<?php require './views/admin/layouts/sidebar.php'; ?>

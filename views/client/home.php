@@ -131,7 +131,7 @@
 </head>
 <body>
 
-<?php require './views/client/header.php'; ?>
+<?php require './views/client/layouts/header.php'; ?>
 
     <section class="hero">
         <div class="container">
@@ -168,7 +168,7 @@
         </div>
     </section>
 
-<?php require './views/client/footer.php'; ?>
+<?php require './views/client/layouts/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
