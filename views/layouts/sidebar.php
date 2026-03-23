@@ -25,8 +25,8 @@
 
             <!-- Danh mục -->
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
-                    📂 Danh mục
+                <a href="index.php?act=list-category" class="nav-link text-white">
+                    📂 Quản lý danh mục
                 </a>
             </li>
 

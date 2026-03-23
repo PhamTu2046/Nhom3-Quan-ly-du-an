@@ -5,6 +5,7 @@ require_once './commons/function.php';
 
 require_once './controllers/ProductController.php';
 require_once './controllers/AuthController.php';
+require_once './controllers/CategoryController.php';
 
 require_once './models/ProductModel.php';
 require_once './models/CategoryModel.php';
@@ -61,6 +62,14 @@ match ($act) {
     'trash-product' => (new ProductController())->trash(),
     'restore-product' => (new ProductController())->restore(),
     'force-delete-product' => (new ProductController())->forceDelete(),
+
+    // ===== CATEGORY =====
+    'list-category' => (new CategoryController())->index(),
+    'add-category' => (new CategoryController())->create(),
+    'store-category' => (new CategoryController())->store(),
+    'edit-category' => (new CategoryController())->edit(),
+    'update-category' => (new CategoryController())->update(),
+    'delete-category' => (new CategoryController())->delete(),
 
     // ===== DEFAULT (TRÁNH LỖI MATCH) =====
     default => (new AuthController())->showLogin(),
