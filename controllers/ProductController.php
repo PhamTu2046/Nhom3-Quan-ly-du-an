@@ -112,6 +112,10 @@ class ProductController
             $file = $_FILES['image'];
             $fileName = time() . '_' . $file['name'];
 
+            // Xóa ảnh cũ
+            if (!empty($image) && file_exists('./uploads/' . $image)) {
+                unlink('./uploads/' . $image);
+            }
             move_uploaded_file($file['tmp_name'], './uploads/' . $fileName);
 
             $image = $fileName;
@@ -124,6 +128,14 @@ class ProductController
     }
 
     public function delete() {
+        $id = $_GET['id'];
+        $product = $this->modelProduct->find($id);
+
+        // Xóa ảnh
+        if (!empty($product['image']) && file_exists('./uploads/' . $product['image'])) {
+            unlink('./uploads/' . $product['image']);
+        }
+        
         $this->modelProduct->softDelete($_GET['id']);
         header("Location: index.php?act=list-product");
         exit;

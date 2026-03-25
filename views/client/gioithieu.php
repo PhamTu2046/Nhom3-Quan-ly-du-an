@@ -199,7 +199,7 @@
                 <div class="col-lg-6">
                     <div class="luxury-info-box overlap-left">
                         <p class="chef-quote">Nấu ăn không phải là công thức, đó là cách chúng ta kể những câu chuyện bằng các giác quan.</p>
-                        <h3 class="chef-name">Nguyễn Thiện</h3>
+                        <h3 class="chef-name">Nguyễn Văn Thiện</h3>
                         <span class="chef-role">Founder / Executive Chef</span>
                         <p class="chef-bio">
                             Trở về từ kinh đô ánh sáng Paris sau 12 năm cống hiến tại các nhà hàng 3 sao Michelin, Chef Thiện mang theo triết lý "Ẩm thực Vị lai". Anh kết hợp hoàn hảo giữa kỹ thuật Gastronomy (Ẩm thực phân tử) tiên tiến nhất của phương Tây và linh hồn nguyên bản của các loại gia vị đặc hữu Việt Nam. Mỗi đĩa thức ăn qua tay anh là một tác phẩm điêu khắc vi tế.
@@ -222,7 +222,7 @@
                 <div class="col-lg-6">
                     <div class="luxury-info-box overlap-right">
                         <p class="chef-quote">Mỗi chai vang là một dòng chảy của lịch sử, văn hóa và thời gian được đóng gói cẩn thận.</p>
-                        <h3 class="chef-name">Trần Tú</h3>
+                        <h3 class="chef-name">Phạm Văn Tú</h3>
                         <span class="chef-role">Co-Founder / Head Sommelier</span>
                         <p class="chef-bio">
                             Tú là một trong ba người Việt Nam hiếm hoi sở hữu chứng chỉ danh giá WSET Level 4 Diploma. Bằng sự nhạy bén thiên bẩm về khứu giác và kiến thức uyên thâm về thổ nhưỡng, anh đã đích thân thu thập hơn 800 nhãn vang quý hiếm trên toàn cầu. Trải nghiệm Food & Wine Pairing do Tú tư vấn luôn là mảnh ghép hoàn hảo, đánh thức mọi dải hương vị tinh tế nhất.
@@ -245,7 +245,7 @@
                 <div class="col-lg-6">
                     <div class="luxury-info-box overlap-left">
                         <p class="chef-quote">Sự hoàn hảo không đến từ sự xa hoa phô trương, mà đến từ sự thấu hiểu khách hàng.</p>
-                        <h3 class="chef-name">Lê Hùng</h3>
+                        <h3 class="chef-name">Khuất Duy Hùng</h3>
                         <span class="chef-role">General Manager</span>
                         <p class="chef-bio">
                             Từng là Giám đốc Ẩm thực tại chuỗi nghỉ dưỡng 6 sao Aman, Hùng là "nhạc trưởng" thiết lập nên chuẩn mực dịch vụ tại Gourmet Haven. Với triết lý "Invisible Service" (Dịch vụ vô hình), đội ngũ của anh luôn xuất hiện đúng lúc khách hàng cần và lùi lại để nhường không gian riêng tư. Mọi chi tiết từ nhiệt độ phòng, ánh sáng đến loại hoa trên bàn đều được Hùng kiểm soát bằng sự tỉ mỉ tột độ.
@@ -268,7 +268,7 @@
                 <div class="col-lg-6">
                     <div class="luxury-info-box overlap-right">
                         <p class="chef-quote">Đồ ngọt không chỉ để tráng miệng, nó là lời cảm ơn ngọt ngào nhất để khép lại một ký ức đẹp.</p>
-                        <h3 class="chef-name">Phạm Tuân</h3>
+                        <h3 class="chef-name">Phan Thế Tuân</h3>
                         <span class="chef-role">Sous Chef / Pastry Master</span>
                         <p class="chef-bio">
                             Là một nghệ nhân thực thụ trong thế giới đồ ngọt, Tuân coi đường, bơ và chocolate là đất sét để tạo nên những tác phẩm điêu khắc ăn được. Tu nghiệp nhiều năm tại Vienna (Áo) - cái nôi của bánh ngọt thế giới, anh liên tục phá vỡ các giới hạn vật lý để tạo ra những món tráng miệng kết hợp cả nhiệt độ, khói lạnh và hiệu ứng thị giác bùng nổ ngay trên bàn ăn.

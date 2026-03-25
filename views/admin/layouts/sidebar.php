@@ -61,11 +61,11 @@
             <hr class="bg-light">
 
             <!-- Cài đặt -->
-            <li class="nav-item mb-2">
+            <!-- <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-white">
                     ⚙️ Cài đặt
                 </a>
-            </li>
+            </li> -->
 
             <!-- Đăng xuất -->
             <li class="nav-item">
