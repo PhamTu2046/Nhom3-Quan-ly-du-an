@@ -135,7 +135,7 @@ class ProductController
         if (!empty($product['image']) && file_exists('./uploads/' . $product['image'])) {
             unlink('./uploads/' . $product['image']);
         }
-        
+
         $this->modelProduct->softDelete($_GET['id']);
         header("Location: index.php?act=list-product");
         exit;

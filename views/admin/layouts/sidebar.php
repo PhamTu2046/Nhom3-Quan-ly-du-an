@@ -11,7 +11,7 @@
 
             <!-- Dashboard -->
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
+                <a href="index.php?act=dashboard" class="nav-link text-white">
                     📊 Dashboard
                 </a>
             </li>
@@ -78,4 +78,4 @@
     </div>
 
     <!-- Content -->
-    <div class="p-4 w-100">
+    <div class="p-4 flex-grow-1">
