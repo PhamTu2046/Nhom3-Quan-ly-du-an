@@ -6,10 +6,12 @@ require_once './commons/function.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/AuthController.php';
 require_once './controllers/CategoryController.php';
+require_once './controllers/AdminController.php';
 
 require_once './models/ProductModel.php';
 require_once './models/CategoryModel.php';
 require_once './models/UserModel.php';
+require_once './models/OrderModel.php';
 
 // ===== SESSION =====
 session_start();
@@ -74,4 +76,7 @@ match ($act) {
 
     // ===== DEFAULT (TRÁNH LỖI MATCH) =====
     default => (new AuthController())->showLogin(),
+
+    // Dashboard
+    'dashboard' => (new AdminController())->dashboard(),
 };

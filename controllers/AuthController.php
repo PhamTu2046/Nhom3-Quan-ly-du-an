@@ -26,7 +26,7 @@ class AuthController
 
                 // Phân quyền
                 if ($user['role'] === 'admin') {
-                    header('Location: index.php?act=admin');
+                    header('Location: index.php?act=dashboard');
                     exit();
                 }
 
