@@ -97,25 +97,30 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label class="form-label text-uppercase">Tên đăng nhập *</label>
-                <input type="text" name="ten_dang_nhap" class="form-control" placeholder="username" required>
+                <input type="text" name="ten_dang_nhap" class="form-control"
+       placeholder="username" required minlength="4" maxlength="20">
             </div>
             <div class="col-md-6 mb-3">
                 <label class="form-label text-uppercase">Mật khẩu *</label>
-                <input type="password" name="mat_khau" class="form-control" placeholder="••••••••" required>
+                <input type="password" name="mat_khau" class="form-control"
+       placeholder="••••••••" required minlength="6">
             </div>
 
             <div class="col-md-6 mb-3">
                 <label class="form-label text-uppercase">Họ và tên *</label>
-                <input type="text" name="ho_ten" class="form-control" placeholder="Nguyen Van A" required>
+                <input type="text" name="ho_ten" class="form-control"
+       placeholder="Nguyen Van A" required minlength="2">
             </div>
             <div class="col-md-6 mb-3">
                 <label class="form-label text-uppercase">Số điện thoại *</label>
-                <input type="tel" name="so_dien_thoai" class="form-control" placeholder="0987xxxxxx" required>
+                <input type="tel" name="so_dien_thoai" class="form-control"
+       placeholder="0987xxxxxx" required pattern="0[0-9]{9}">
             </div>
 
             <div class="col-12 mb-3">
                 <label class="form-label text-uppercase">Địa chỉ Email *</label>
-                <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
+                <input type="email" name="email" class="form-control"
+       placeholder="example@gmail.com" required>
             </div>
             <div class="col-12 mb-3">
                 <label class="form-label text-uppercase">Địa chỉ giao hàng</label>
@@ -137,5 +142,42 @@
     </div>
 </div>
 
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+
+    const username = document.querySelector("[name='ten_dang_nhap']").value.trim();
+    const password = document.querySelector("[name='mat_khau']").value.trim();
+    const name = document.querySelector("[name='ho_ten']").value.trim();
+    const phone = document.querySelector("[name='so_dien_thoai']").value.trim();
+    const email = document.querySelector("[name='email']").value.trim();
+
+    let error = "";
+
+    if (username.length < 4) {
+        error += "Tên đăng nhập phải >= 4 ký tự\n";
+    }
+
+    if (password.length < 6) {
+        error += "Mật khẩu phải >= 6 ký tự\n";
+    }
+
+    if (name.length < 2) {
+        error += "Họ tên không hợp lệ\n";
+    }
+
+    if (!/^0[0-9]{9}$/.test(phone)) {
+        error += "Số điện thoại không hợp lệ\n";
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        error += "Email không hợp lệ\n";
+    }
+
+    if (error !== "") {
+        alert(error);
+        e.preventDefault();
+    }
+});
+</script>
 </body>
 </html>

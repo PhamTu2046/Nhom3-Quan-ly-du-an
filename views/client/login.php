@@ -88,12 +88,15 @@
     <form action="index.php?act=check-login" method="POST">
         <div class="mb-3">
             <label class="form-label small text-uppercase">Tên đăng nhập</label>
-            <input type="text" name="ten_dang_nhap" class="form-control" placeholder="Nhập username..." required>
+            <input type="text" name="ten_dang_nhap" class="form-control"
+       placeholder="Nhập username..." required minlength="4">
+
         </div>
 
         <div class="mb-4">
             <label class="form-label small text-uppercase">Mật khẩu</label>
-            <input type="password" name="mat_khau" class="form-control" placeholder="••••••••" required>
+            <input type="password" name="mat_khau" class="form-control"
+       placeholder="••••••••" required minlength="6">
         </div>
 
         <button type="submit" class="btn btn-login text-uppercase">Đăng Nhập</button>
@@ -107,5 +110,31 @@
     </div>
 </div>
 
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+
+    const username = document.querySelector("[name='ten_dang_nhap']").value.trim();
+    const password = document.querySelector("[name='mat_khau']").value.trim();
+
+    let error = "";
+
+    if (username === "") {
+        error += "Vui lòng nhập tên đăng nhập\n";
+    }
+
+    if (password === "") {
+        error += "Vui lòng nhập mật khẩu\n";
+    }
+
+    if (password.length < 6) {
+        error += "Mật khẩu phải >= 6 ký tự\n";
+    }
+
+    if (error !== "") {
+        alert(error);
+        e.preventDefault();
+    }
+});
+</script>
 </body>
 </html>
