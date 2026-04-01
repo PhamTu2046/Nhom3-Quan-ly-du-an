@@ -1,4 +1,4 @@
-<?php require './views/layouts/header.php'; ?>
+<?php require './views/admin/layouts/header.php'; ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -183,4 +183,4 @@
     </div>
 </div>
 
-<?php require './views/layouts/footer.php'; ?>
+<?php require './views/admin/layouts/footer.php'; ?>

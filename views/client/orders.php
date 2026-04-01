@@ -1,4 +1,4 @@
-<?php require './views/client/header.php'; ?>
+<?php require './views/client/layouts/header.php'; ?>
 <?php
 $statusClasses = [
     'pending' => 'order-pending',
@@ -205,4 +205,4 @@ $statusLabels = [
     </div>
 </div>
 
-<?php require './views/client/footer.php'; ?>
+<?php require './views/client/layouts/footer.php'; ?>

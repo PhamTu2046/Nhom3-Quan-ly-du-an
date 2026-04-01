@@ -1,4 +1,4 @@
-<?php require './views/client/header.php'; ?>
+<?php require './views/client/layouts/header.php'; ?>
 
 <style>
     /* --- HỆ THỐNG BIẾN SUPREME --- */
@@ -216,4 +216,4 @@
     <?php endif; ?>
 </div>
 
-<?php require './views/client/footer.php'; ?>
+<?php require './views/client/layouts/footer.php'; ?>

@@ -1,4 +1,4 @@
-<?php require './views/client/header.php'; ?>
+<?php require './views/client/layouts/header.php'; ?>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -225,4 +225,4 @@
     </div>
 </div>
 
-<?php require './views/client/footer.php'; ?>
+<?php require './views/client/layouts/footer.php'; ?>
