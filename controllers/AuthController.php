@@ -4,101 +4,87 @@ class AuthController
 {
     public function showLogin()
     {
+        $error = getFlash('error');
+        $success = getFlash('success');
         require_once './views/client/login.php';
     }
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Lấy đúng name từ form
-            $username = $_POST['ten_dang_nhap'] ?? '';
-            $password = $_POST['mat_khau'] ?? '';
-
-            $userModel = new UserModel();
-
-            // Bạn cần sửa hàm này trong model nữa
-            $user = $userModel->getUserByUsernameAndPassword($username, $password);
-
-            if ($user) {
-                // Lưu thông tin user vào session
-                $_SESSION['user'] = $user;
-                $_SESSION['name'] = $user['name'];
-
-                // Phân quyền
-                if ($user['role'] === 'admin') {
-                    header('Location: index.php?act=dashboard');
-                    exit();
-                }
-
-                // DB của bạn đang là 'customer' chứ không phải 'client'
-                if ($user['role'] === 'customer') {
-                    header('Location: index.php?act=home');
-                    exit();
-                }
-
-                echo 'Role không hợp lệ';
-                exit();
-            } else {
-                $error = 'Tên đăng nhập hoặc mật khẩu không đúng!';
-                require_once './views/client/login.php';
-            }
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            redirect('login');
         }
+
+        $credential = trim($_POST['ten_dang_nhap'] ?? '');
+        $password = trim($_POST['mat_khau'] ?? '');
+
+        $userModel = new UserModel();
+        $user = $userModel->getUserByCredential($credential, $password);
+
+        if ($user) {
+            $_SESSION['user'] = $user;
+            setFlash('success', 'Đăng nhập thành công.');
+            redirect($user['role'] === 'admin' ? 'admin' : 'home');
+        }
+
+        $error = 'Tên đăng nhập/email hoặc mật khẩu không đúng!';
+        require_once './views/client/login.php';
     }
 
     public function logout()
     {
         unset($_SESSION['user']);
         session_destroy();
-        header('Location: index.php?act=login');
-        exit();
+        session_start();
+        setFlash('success', 'Bạn đã đăng xuất khỏi hệ thống.');
+        redirect('login');
     }
 
     public function showRegister()
-{
-    require './views/client/register.php';
-}
+    {
+        $error = getFlash('error');
+        require './views/client/register.php';
+    }
 
-public function register()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    public function register()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            redirect('register');
+        }
 
-        $username = $_POST['ten_dang_nhap'] ?? '';
-        $password = $_POST['mat_khau'] ?? '';
-        $name = $_POST['ho_ten'] ?? '';
-        $phone = $_POST['so_dien_thoai'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $address = $_POST['dia_chi'] ?? '';
+        $username = trim($_POST['ten_dang_nhap'] ?? '');
+        $password = trim($_POST['mat_khau'] ?? '');
+        $phone = trim($_POST['so_dien_thoai'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $address = trim($_POST['dia_chi'] ?? '');
 
-        $error = [];
+        $errors = [];
 
-        if (empty($username)) $error[] = "Tên đăng nhập không được trống";
-        if (empty($password)) $error[] = "Mật khẩu không được trống";
-        if (empty($email)) $error[] = "Email không được trống";
+        if ($username === '') {
+            $errors[] = 'Tên đăng nhập không được để trống';
+        }
+        if ($password === '') {
+            $errors[] = 'Mật khẩu không được để trống';
+        }
+        if ($email === '') {
+            $errors[] = 'Email không được để trống';
+        }
 
-        if (!empty($error)) {
+        $userModel = new UserModel();
+
+        if ($email !== '' && $userModel->getUserByEmail($email)) {
+            $errors[] = 'Email đã tồn tại trong hệ thống';
+        }
+
+        if (!empty($errors)) {
+            $error = implode('<br>', $errors);
             require './views/client/register.php';
             return;
         }
 
-        
-        $userModel = new UserModel();
+        $userModel->insertUser($username, $password, $email, $phone, $address, 'customer');
 
-// ✅ check email tồn tại
-$checkEmail = $userModel->getUserByEmail($email);
-
-if ($checkEmail) {
-    $error = "Email đã tồn tại!";
-    require './views/client/register.php';
-    return;
-}
-
-// 👉 nếu không trùng mới insert
-$userModel->insertUser($username, $password, $email, $phone, $address, 'customer');
-
-header('Location: index.php?act=login');
-exit();
-
-        
+        setFlash('success', 'Đăng ký thành công. Vui lòng đăng nhập để tiếp tục.');
+        redirect('login');
     }
-}
 }

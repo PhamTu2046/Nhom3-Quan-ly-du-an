@@ -1,81 +1,39 @@
+<?php $currentAct = $_GET['act'] ?? 'admin'; ?>
 <div class="d-flex">
+    <div class="bg-dark text-white p-3" style="width: 260px; min-height: 100vh;">
+        <h4 class="text-center mb-2">🍽 Agile Food</h4>
+        <p class="text-center text-white-50 small mb-4">Quản trị hệ thống bán Pizza, Burger và Đồ uống.</p>
 
-    <!-- Sidebar -->
-    <div class="bg-dark text-white p-3" style="width: 250px; min-height: 100vh;">
-
-        <!-- Logo -->
-        <h4 class="text-center mb-4">🍔 Admin</h4>
-
-        <!-- Menu -->
-        <ul class="nav flex-column">
-
-            <!-- Dashboard -->
-            <li class="nav-item mb-2">
-                <a href="index.php?act=dashboard" class="nav-link text-white">
-                    📊 Dashboard
-                </a>
-            </li>
-
-            <!-- Quản lý sản phẩm -->
-            <li class="nav-item mb-2">
-                <a href="index.php?act=list-product" class="nav-link text-white">
-                    🍔 Quản lý món ăn
-                </a>
-            </li>
-
-            <!-- Danh mục -->
-            <li class="nav-item mb-2">
-                <a href="index.php?act=list-category" class="nav-link text-white">
-                    📂 Quản lý danh mục
-                </a>
-            </li>
-
-            <!-- Đơn hàng -->
-            <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
-                    🧾 Đơn hàng
-                </a>
-            </li>
-
-            <!-- Người dùng -->
-            <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
-                    👤 Người dùng
-                </a>
-            </li>
-
-            <!-- Bài viết -->
-            <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
-                    📰 Bài viết
-                </a>
-            </li>
-
-            <!-- Thùng rác -->
-            <li class="nav-item mb-2">
-                <a href="index.php?act=trash-product" class="nav-link text-white">
-                    🗑 Thùng rác
-                </a>
-            </li>
-
-            <hr class="bg-light">
-
-            <!-- Cài đặt -->
-            <!-- <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-white">
-                    ⚙️ Cài đặt
-                </a>
-            </li> -->
-
-            <!-- Đăng xuất -->
+        <ul class="nav flex-column gap-1">
             <li class="nav-item">
-                <a href="index.php?act=logout" class="nav-link text-danger">
-    🚪 Đăng xuất
-</a>
+                <a href="index.php?act=admin" class="nav-link text-white sidebar-link <?= $currentAct === 'admin' ? 'active' : '' ?>">📊 Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=list-product" class="nav-link text-white sidebar-link <?= in_array($currentAct, ['list-product', 'add-product', 'edit-product'], true) ? 'active' : '' ?>">🍔 Quản lý sản phẩm</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=admin-categories" class="nav-link text-white sidebar-link <?= $currentAct === 'admin-categories' ? 'active' : '' ?>">📂 Danh mục</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=admin-orders" class="nav-link text-white sidebar-link <?= in_array($currentAct, ['admin-orders', 'update-order-status'], true) ? 'active' : '' ?>">🧾 Đơn hàng</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=admin-users" class="nav-link text-white sidebar-link <?= $currentAct === 'admin-users' ? 'active' : '' ?>">👤 Người dùng</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=admin-posts" class="nav-link text-white sidebar-link <?= in_array($currentAct, ['admin-posts', 'add-post', 'edit-post'], true) ? 'active' : '' ?>">📰 Bài viết</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=trash-product" class="nav-link text-white sidebar-link <?= $currentAct === 'trash-product' ? 'active' : '' ?>">🗑 Thùng rác sản phẩm</a>
             </li>
 
+            <hr class="border-light opacity-25 my-3">
+
+            <li class="nav-item">
+                <a href="index.php?act=home" class="nav-link text-white sidebar-link">🏠 Xem trang client</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.php?act=logout" class="nav-link text-danger sidebar-link">🚪 Đăng xuất</a>
+            </li>
         </ul>
     </div>
-
-    <!-- Content -->
-    <div class="p-4 flex-grow-1">
