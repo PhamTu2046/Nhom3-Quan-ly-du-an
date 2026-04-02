@@ -55,6 +55,8 @@ match ($act) {
     'checkout' => (new ProductController())->checkout(),
     'place-order' => (new ProductController())->placeOrder(),
     'my-orders' => (new ProductController())->myOrders(),
+    'profile' => (new AuthController())->profile(),
+    'update-profile' => (new AuthController())->updateProfile(),
 
     // ===== ADMIN =====
     'admin' => (new ProductController())->dashboard(),

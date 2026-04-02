@@ -261,6 +261,7 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
                             <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
                                 <li><a class="dropdown-item dropdown-item-lux text-warning" href="index.php?act=admin"><i class="fa-solid fa-gear me-2"></i>Quản trị</a></li>
                             <?php else: ?>
+                                <li><a class="dropdown-item dropdown-item-lux" href="index.php?act=profile"><i class="fa-solid fa-user me-2"></i>Thông tin</a></li>
                                 <li><a class="dropdown-item dropdown-item-lux" href="index.php?act=cart"><i class="fa-solid fa-cart-shopping me-2"></i>Giỏ hàng</a></li>
                                 <li><a class="dropdown-item dropdown-item-lux" href="index.php?act=my-orders"><i class="fa-solid fa-receipt me-2"></i>Đơn hàng</a></li>
                             <?php endif; ?>
