@@ -17,7 +17,7 @@
     }
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         background-color: var(--deep-noir); /* Nền tối toàn trang */
         color: rgba(255,255,255,0.7);
         overflow-x: hidden;
@@ -56,14 +56,14 @@
     }
 
     /* --- Common Luxury Elements --- */
-    .cinzel-font { font-family: 'Cinzel', serif; }
+    .cinzel-font { font-family: Arial, Helvetica, sans-serif; }
     
     .text-gold { color: var(--ultra-gold) !important; }
     
     .letter-spacing-huge { letter-spacing: 10px; text-transform: uppercase; }
     
     .section-title-lux {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 3.5rem;
         font-weight: 700;
         color: white;
@@ -98,7 +98,7 @@
     }
 
     .hero-title-big {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 6rem;
         font-weight: 700;
         letter-spacing: -3px;
@@ -139,7 +139,7 @@
     }
 
     .stat-number {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 4rem;
         font-weight: 700;
         color: white;
@@ -234,7 +234,7 @@
     }
     
     .pillar-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 1.5rem;
         font-weight: 600;
         color: white;
@@ -436,7 +436,7 @@
                         <p class="text-white-50 mb-5" style="line-height: 2.2; font-weight: 300; font-size: 1.05rem; letter-spacing: 1px;">
                             Agile Food không chỉ đơn thuần là một thương hiệu; đó là một di sản về sự hoàn hảo. Được kiến tạo bởi những bậc thầy ẩm thực hàng đầu, chúng tôi theo đuổi triết lý kết hợp tinh hoa nguyên liệu quý hiếm với nghệ thuật chế biến bậc thầy. Mỗi món ăn là một chương trong câu chuyện về niềm đam mê và sự cống hiến không ngừng nghỉ cho mỹ vị vĩnh cửu.
                         </p>
-                        <p class="text-muted fst-italic mb-5 fw-light" style="font-size: 0.95rem; border-left: 2px solid var(--ultra-gold); padding-left: 25px;">
+                        <p class="text-secondary fst-italic mb-5 fw-light" style="font-size: 0.95rem; border-left: 2px solid var(--ultra-gold); padding-left: 25px;">
                             "Chúng tôi không phục vụ bữa ăn; chúng tôi kiến tạo những khoảnh khắc lịch sử của vị giác ngay tại không gian biệt lập của Quý khách."
                         </p>
                         <a href="#" class="btn btn-outline-gold">Tìm hiểu hành trình của chúng tôi</a>

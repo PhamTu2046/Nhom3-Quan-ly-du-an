@@ -13,7 +13,7 @@
     body {
         background-color: var(--deep-noir);
         color: rgba(255,255,255,0.8);
-        font-family: 'Inter', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     /* Tiêu đề Section */
@@ -23,14 +23,14 @@
     }
 
     .checkout-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 2.5rem;
         color: white;
         letter-spacing: -1px;
     }
 
     .checkout-subtitle {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.8rem;
         color: var(--ultra-gold);
         letter-spacing: 6px;
@@ -49,7 +49,7 @@
 
     /* Form Styling */
     .form-label {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.75rem;
         color: var(--ultra-gold);
         letter-spacing: 2px;
@@ -111,7 +111,7 @@
     }
 
     .total-amount {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 1.8rem;
         color: var(--ultra-gold);
         text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);

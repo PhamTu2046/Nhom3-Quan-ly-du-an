@@ -14,7 +14,7 @@
     body {
         background-color: var(--deep-dark);
         color: #d1d1d1;
-        font-family: 'Inter', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     /* Fix lỗi trắng: Ép bảng và container về nền tối */
@@ -35,7 +35,7 @@
     /* Header của bảng */
     .table thead th {
         background-color: rgba(255, 255, 255, 0.03) !important;
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold) !important;
         font-size: 0.75rem;
         text-transform: uppercase;
@@ -90,7 +90,7 @@
 
     /* Thành tiền */
     .subtotal-text {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold);
         font-weight: 700;
         letter-spacing: 1px;
@@ -114,7 +114,7 @@
 
     /* Buttons */
     .btn-lux {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.8rem;
@@ -254,4 +254,4 @@
     <?php endif; ?>
 </div>
 
-<?php require './views/client/footer.php'; ?>
+<?php require './views/client/layouts/footer.php'; ?>

@@ -28,7 +28,7 @@
 
     /* --- TIÊU ĐỀ --- */
     .lux-page-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold);
         letter-spacing: 4px;
         text-transform: uppercase;
@@ -78,7 +78,7 @@
 
     /* --- NỘI DUNG --- */
     .post-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: #fff;
         font-weight: 700;
         transition: 0.3s;
@@ -138,7 +138,7 @@
     <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-4 border-bottom border-secondary pb-4 animate__animated animate__fadeIn">
         <div>
             <h1 class="lux-page-title mb-2">Thánh Đường Ký Sự</h1>
-            <p class="text-muted mb-0" style="font-style: italic;">"Khám phá những câu chuyện ẩm thực và tin tức độc quyền."</p>
+            <p class="text-secondary mb-0" style="font-style: italic;">"Khám phá những câu chuyện ẩm thực và tin tức độc quyền."</p>
         </div>
         <a href="index.php?act=home" class="btn-back">
             <i class="fa-solid fa-arrow-left-long me-2"></i> Trở về Dinh Thự
@@ -150,7 +150,7 @@
             <div class="py-5">
                 <i class="fa-solid fa-feather-pointed fs-1 mb-4 text-secondary opacity-25"></i>
                 <h4 class="lux-page-title">Trang sách đang chờ được viết...</h4>
-                <p class="text-muted mb-4">Hiện tại chưa có bài viết nào được xuất bản trong thư viện của Thánh Đường.</p>
+                <p class="text-secondary mb-4">Hiện tại chưa có bài viết nào được xuất bản trong thư viện của Thánh Đường.</p>
                 <a href="index.php?act=menu" class="btn-lux-read px-4 py-2">Xem thực đơn ngay</a>
             </div>
         </div>

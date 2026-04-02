@@ -25,7 +25,7 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
 
         body {
             background-color: var(--lux-black);
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             color: rgba(255, 255, 255, 0.85);
             overflow-x: hidden;
         }
@@ -55,7 +55,7 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
         }
 
         .navbar-brand-lux {
-            font-family: 'Cinzel', serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-weight: 700;
             letter-spacing: 4px;
             transition: 0.3s;
@@ -69,7 +69,7 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
         /* Hiệu ứng gạch chân hiện đại cho Nav Link */
         .nav-link-lux {
             position: relative;
-            font-family: 'Cinzel', serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 0.75rem;
             letter-spacing: 2px;
             margin: 0 5px;

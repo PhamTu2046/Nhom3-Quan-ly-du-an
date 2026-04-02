@@ -145,7 +145,7 @@
         <div class="row align-items-center mb-4">
             <div class="col-md-8">
                 <h1 class="lux-title mb-1">Thực Đơn Tất Cả Món Ăn</h1>
-                <p class="text-muted mb-0">Khám phá tinh hoa ẩm thực được lọc theo phong cách riêng của quý khách.</p>
+                <p class="text-secondary mb-0">Khám phá tinh hoa ẩm thực được lọc theo phong cách riêng của quý khách.</p>
             </div>
             <div class="col-md-4 text-md-end">
                 <span class="badge border border-warning text-warning px-3 py-2 fs-6">
@@ -157,11 +157,11 @@
         <form action="index.php" method="GET" class="row g-3">
             <input type="hidden" name="act" value="menu">
             <div class="col-md-5">
-                <label class="small text-uppercase text-muted mb-2">Tìm kiếm tên món</label>
+                <label class="small text-uppercase text-secondary mb-2">Tìm kiếm tên món</label>
                 <input type="text" name="keyword" class="form-control" value="<?= e($_GET['keyword'] ?? '') ?>" placeholder="Nhập tên món ăn...">
             </div>
             <div class="col-md-4">
-                <label class="small text-uppercase text-muted mb-2">Phân loại danh mục</label>
+                <label class="small text-uppercase text-secondary mb-2">Phân loại danh mục</label>
                 <select name="category_id" class="form-select">
                     <option value="0">Tất cả danh mục</option>
                     <?php foreach ($categories as $category): ?>
@@ -182,7 +182,7 @@
             <div class="col-12">
                 <div class="lux-filter-box text-center py-5">
                     <h3 class="lux-title">Không tìm thấy kết quả</h3>
-                    <p class="text-muted">Quý khách vui lòng thử lại với từ khóa hoặc danh mục khác.</p>
+                    <p class="text-secondary">Quý khách vui lòng thử lại với từ khóa hoặc danh mục khác.</p>
                 </div>
             </div>
         <?php else: ?>
