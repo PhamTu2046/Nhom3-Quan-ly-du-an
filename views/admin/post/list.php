@@ -84,9 +84,14 @@
             <h2 class="page-title mb-1">Quản lý bài viết</h2>
             <p class="text-muted small mb-0">Chỉnh sửa nội dung tin tức và bài viết trên website.</p>
         </div>
-        <a href="index.php?act=add-post" class="btn btn-add shadow-sm">
-            <i class="fa-solid fa-plus me-2"></i> Soạn bài viết mới
-        </a>
+        <div class="d-flex gap-2">
+            <a href="index.php?act=trash-post" class="btn btn-outline-secondary shadow-sm" title="Xem thùng rác">
+                <i class="fa-solid fa-trash-can me-2"></i> Thùng rác
+            </a>
+            <a href="index.php?act=add-post" class="btn btn-add shadow-sm">
+                <i class="fa-solid fa-plus me-2"></i> Soạn bài viết mới
+            </a>
+        </div>
     </div>
 
     <div class="card border-0 shadow-sm">
@@ -143,7 +148,7 @@
                                             </a>
                                             <a href="index.php?act=delete-post&id=<?= (int) $post['id'] ?>" 
                                                class="btn-action btn-delete" 
-                                               onclick="return confirm('Hành động xóa không thể khôi phục. Bạn chắc chắn chứ?')" 
+                                               onclick="return confirm('Bài viết sẽ được chuyển vào thùng rác. Bạn chắc chắn chứ?')" 
                                                title="Xóa bài viết">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </a>

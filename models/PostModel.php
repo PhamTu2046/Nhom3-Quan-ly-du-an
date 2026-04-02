@@ -70,4 +70,25 @@ class PostModel
             return 0;
         }
     }
+
+    public function getTrash()
+    {
+        try {
+            return $this->conn->query("SELECT * FROM posts WHERE deleted_at IS NOT NULL ORDER BY id DESC")->fetchAll();
+        } catch (PDOException $exception) {
+            return [];
+        }
+    }
+
+    public function restore($id)
+    {
+        $stmt = $this->conn->prepare("UPDATE posts SET deleted_at = NULL, updated_at = NOW() WHERE id = ?");
+        $stmt->execute([$id]);
+    }
+
+    public function forceDelete($id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM posts WHERE id = ?");
+        $stmt->execute([$id]);
+    }
 }

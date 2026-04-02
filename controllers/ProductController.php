@@ -681,14 +681,47 @@ class ProductController
         $this->requireAdmin();
 
         $id = (int) ($_GET['id'] ?? 0);
+        $this->modelPost->delete($id);
+
+        setFlash('success', 'Bài viết đã được chuyển vào thùng rác.');
+        redirect('admin-posts');
+    }
+
+    public function trashPost()
+    {
+        $this->requireAdmin();
+
+        $posts = $this->modelPost->getTrash();
+        $pageTitle = 'Thùng rác bài viết';
+
+        require './views/admin/post/trash.php';
+    }
+
+    public function restorePost()
+    {
+        $this->requireAdmin();
+
+        $id = (int) ($_GET['id'] ?? 0);
+        $this->modelPost->restore($id);
+
+        setFlash('success', 'Đã khôi phục bài viết.');
+        redirect('trash-post');
+    }
+
+    public function forceDeletePost()
+    {
+        $this->requireAdmin();
+
+        $id = (int) ($_GET['id'] ?? 0);
         $post = $this->modelPost->find($id);
 
         if ($post && !empty($post['image'])) {
             deleteFile('uploads/' . basename($post['image']));
         }
 
-        $this->modelPost->delete($id);
-        setFlash('success', 'Đã xóa bài viết.');
-        redirect('admin-posts');
+        $this->modelPost->forceDelete($id);
+
+        setFlash('success', 'Đã xóa vĩnh viễn bài viết.');
+        redirect('trash-post');
     }
 }

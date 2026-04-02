@@ -70,6 +70,9 @@ match ($act) {
     'edit-post' => (new ProductController())->editPost(),
     'update-post' => (new ProductController())->updatePost(),
     'delete-post' => (new ProductController())->deletePost(),
+    'trash-post' => (new ProductController())->trashPost(),
+    'restore-post' => (new ProductController())->restorePost(),
+    'force-delete-post' => (new ProductController())->forceDeletePost(),
 
     // ===== PRODUCT ADMIN =====
     'list-product' => (new ProductController())->index(),
