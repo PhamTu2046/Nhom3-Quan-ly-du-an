@@ -15,7 +15,7 @@
     }
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         background-color: var(--lux-bg-content);
         color: var(--lux-black);
         overflow-x: hidden;
@@ -41,7 +41,7 @@
     }
 
     .hero-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 4.5rem;
         font-weight: 900;
         color: var(--lux-white);
@@ -51,7 +51,7 @@
 
     .hero-title span {
         display: block;
-        font-family: 'Playfair Display', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 2.2rem;
         font-weight: 400;
         font-style: italic;
@@ -97,7 +97,7 @@
 
     .lux-badge {
         background: var(--lux-gold);
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.6rem;
         letter-spacing: 3px;
         padding: 8px 16px;
@@ -105,7 +105,7 @@
     }
 
     .price-tag {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold-dark);
         font-size: 1.4rem;
         font-weight: 700;
@@ -136,7 +136,7 @@
         color: white;
         border-radius: 0;
         padding: 15px 35px;
-        font-family: 'Cinzel', serif;
+        ffont-family: Arial, Helvetica, sans-serif;
         letter-spacing: 3px;
         font-size: 0.75rem;
         border: 1px solid var(--lux-gold);
@@ -152,7 +152,7 @@
     }
 
     .section-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 3.2rem;
         font-weight: 700;
         letter-spacing: 2px;
@@ -162,7 +162,7 @@
         -webkit-text-fill-color: transparent;
     }
 
-    .text-gold { color: var(--lux-gold) !important; font-family: 'Cinzel', serif; }
+    .text-gold { color: var(--lux-gold) !important; font-family: Arial, Helvetica, sans-serif; }
 </style>
 
 <div class="container-fluid p-0">
@@ -179,7 +179,7 @@
                 <div class="col-lg-5 animate__animated animate__fadeInRight">
                     <div class="card glass-search-card text-white">
                         <div class="card-body p-5">
-                            <h3 class="text-gold mb-4" style="font-family: 'Cinzel', serif;">Tìm kiếm món ăn</h3>
+                            <h3 class="text-gold mb-4" style="font-family: Arial, Helvetica, sans-serif;">Tìm kiếm món ăn</h3>
                             <form action="index.php" method="GET">
                                 <input type="hidden" name="act" value="home">
                                 <div class="mb-4">
@@ -211,7 +211,7 @@
         <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-4">
             <div>
                 <span class="text-gold letter-spacing-Huge d-block mb-2">Món ăn nổi bật</span>
-                <h2 class="section-title">Thực đơn nổi bật</h2>
+                <h2 class="section-title" style=" -webkit-text-fill-color: white;">Thực đơn nổi bật</h2>
                 <div style="width: 120px; height: 2px; background: var(--lux-gold); margin-top: 15px;"></div>
             </div>
             <div class="d-flex gap-3">
@@ -238,7 +238,7 @@
                                 <img src="<?= e($image) ?>" class="card-img-top" alt="<?= e($product['name']) ?>" style="height: 320px;">
                             </div>
                             <div class="card-body p-4 d-flex flex-column text-center">
-                                <h4 class="card-title text-uppercase fw-bold mb-3" style="font-family: 'Cinzel', serif; letter-spacing: 1px;"><?= e($product['name']) ?></h4>
+                                <h4 class="card-title text-uppercase fw-bold mb-3" style="font-family: Arial, Helvetica, sans-serif; letter-spacing: 1px;"><?= e($product['name']) ?></h4>
                                 <p class="card-text text-muted mb-4 small px-2" style="line-height: 1.8; font-style: italic;"><?= e($shortDescription) ?></p>
                                 <div class="mt-auto pt-4 border-top">
                                     <div class="price-tag mb-4"><?= number_format($product['price']) ?> <small style="font-size: 0.8rem; letter-spacing: 1px;">VND</small></div>
@@ -272,7 +272,7 @@
                             <div class="card blog-card-lux rounded-0 h-100 border-0">
                                 <img src="<?= e($postImage) ?>" class="card-img-top rounded-0" style="height: 250px; object-fit: cover; filter: sepia(30%) brightness(80%);">
                                 <div class="card-body p-4 text-start">
-                                    <h5 class="text-white text-uppercase mb-3" style="font-family: 'Cinzel', serif; letter-spacing: 1px;"><?= e($post['title']) ?></h5>
+                                    <h5 class="text-white text-uppercase mb-3" style="font-family: Arial, Helvetica, sans-serif; letter-spacing: 1px;"><?= e($post['title']) ?></h5>
                                     <p class="text-white-50 small mb-4 fw-light" style="line-height: 1.8;"><?= e($shortPost) ?></p>
                                     <div class="d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
                                         <span class="text-gold fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 2px;">Read Memoir</span>

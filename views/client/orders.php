@@ -144,7 +144,7 @@ $statusLabels = [
     <div class="d-flex justify-content-between align-items-center mb-5 animate__animated animate__fadeIn">
         <div>
             <h1 class="h2 lux-header-title mb-1">Đơn hàng của tôi</h1>
-            <p class="text-muted mb-0" style="font-style: italic;">"Lịch sử những lần thưởng thức tinh hoa tại Thánh Đường."</p>
+            <p class="text-secondary mb-0" style="font-style: italic;">"Lịch sử những lần thưởng thức tinh hoa tại Thánh Đường."</p>
         </div>
         <a href="index.php?act=menu" class="btn btn-lux-outline px-4 py-2">
             <i class="fa-solid fa-plus me-2"></i>Tiếp tục mua hàng
@@ -157,7 +157,7 @@ $statusLabels = [
                 <div class="text-center py-5">
                     <i class="fa-solid fa-receipt fs-1 mb-4 text-secondary opacity-25"></i>
                     <h4 class="lux-header-title">Trống trải như một bàn tiệc chưa bày</h4>
-                    <p class="text-muted">Hãy đặt món đầu tiên để hệ thống bắt đầu theo dõi cho bạn.</p>
+                    <p class="text-secondary">Hãy đặt món đầu tiên để hệ thống bắt đầu theo dõi cho bạn.</p>
                     <a href="index.php?act=menu" class="btn btn-lux-outline px-5 py-3 mt-3">Đặt món ngay</a>
                 </div>
             <?php else: ?>
