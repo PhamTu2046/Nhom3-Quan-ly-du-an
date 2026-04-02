@@ -84,4 +84,39 @@ class UserModel
         );
         $stmt->execute([$phone, $address, $id]);
     }
+
+    public function getUserById($id)
+{
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+public function updateProfile($id, $name, $email, $phone, $address)
+{
+    $stmt = $this->conn->prepare("
+        UPDATE users 
+        SET name = ?, email = ?, phone = ?, address = ?, updated_at = NOW()
+        WHERE id = ?
+    ");
+
+    return $stmt->execute([$name, $email, $phone, $address, $id]);
+}
+
+public function updateProfileFull($id, $name, $email, $phone, $address, $password)
+{
+    if ($password !== '') {
+        $sql = "UPDATE users 
+                SET name = ?, email = ?, phone = ?, address = ?, password = ?, updated_at = NOW()
+                WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$name, $email, $phone, $address, $password, $id]);
+    } else {
+        $sql = "UPDATE users 
+                SET name = ?, email = ?, phone = ?, address = ?, updated_at = NOW()
+                WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([$name, $email, $phone, $address, $id]);
+    }
+}
 }
