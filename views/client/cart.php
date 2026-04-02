@@ -1,4 +1,4 @@
-<?php require './views/client/header.php'; ?>
+<?php require './views/client/layouts/header.php'; ?>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
