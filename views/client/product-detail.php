@@ -55,7 +55,7 @@
 
     /* --- TYPOGRAPHY --- */
     .product-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: 700;
         color: #fff;
         letter-spacing: 2px;
@@ -70,7 +70,7 @@
     }
 
     .category-label {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         background: transparent !important;
         border: 1px solid var(--lux-gold);
         color: var(--lux-gold) !important;
@@ -134,7 +134,7 @@
     }
 
     .related-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 1rem;
         color: #fff;
     }

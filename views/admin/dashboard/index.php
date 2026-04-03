@@ -1,7 +1,14 @@
 <?php require './views/admin/layouts/header.php'; ?>
 
 <div class="container-fluid p-4">
-    <h2 class="mb-4">📊 Dashboard - Báo cáo</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-4">Báo cáo - Doanh thu</h2>
+        </div>
+        <a href="index.php?act=admin" class="btn btn-back btn-outline-secondary px-4">
+            <i class="fa-solid fa-arrow-left me-2"></i> Quay lại
+        </a>
+    </div>
 
     <!-- Tổng quan -->
     <div class="row mb-4">

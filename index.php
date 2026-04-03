@@ -5,6 +5,7 @@ require_once './commons/function.php';
 
 require_once './controllers/ProductController.php';
 require_once './controllers/AuthController.php';
+require_once './controllers/AdminController.php';
 
 require_once './models/ProductModel.php';
 require_once './models/CategoryModel.php';
@@ -75,6 +76,7 @@ match ($act) {
     'trash-post' => (new ProductController())->trashPost(),
     'restore-post' => (new ProductController())->restorePost(),
     'force-delete-post' => (new ProductController())->forceDeletePost(),
+    'admin-report' => (new AdminController())->dashboard(),
 
     // ===== PRODUCT ADMIN =====
     'list-product' => (new ProductController())->index(),

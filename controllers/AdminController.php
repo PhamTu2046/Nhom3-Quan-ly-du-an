@@ -1,18 +1,18 @@
 <?php
 
-require_once './models/OrderModel.php';
+require_once './models/AdminReport.php';
 
 class AdminController
 {
     public function dashboard()
     {
-        $orderModel = new OrderModel();
+        $adminReport = new AdminReport();
 
-        $totalRevenue = $orderModel->getTotalRevenue();
-        $totalOrders = $orderModel->getTotalOrders();
-        $revenueByDay = $orderModel->getRevenueByDay();
-        $revenueByMonth = $orderModel->getRevenueByMonth();
-        $ordersByDay = $orderModel->getOrdersByDay();
+        $totalRevenue = $adminReport->getTotalRevenue();
+        $totalOrders = $adminReport->getTotalOrders();
+        $revenueByDay = $adminReport->getRevenueByDay();
+        $revenueByMonth = $adminReport->getRevenueByMonth();
+        $ordersByDay = $adminReport->getOrdersByDay();
 
         require './views/admin/dashboard/index.php';
     }
