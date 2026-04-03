@@ -110,7 +110,23 @@
     <div class="col-md-6 col-xl-3">
         <div class="card stat-card shadow-sm h-100 bg-dark text-white">
             <div class="card-body p-4">
-                <div class="stat-icon" style="background: rgba(255,255,255,0.1);"><i class="fa-solid fa-coins text-warning"></i></div>
+                <!-- <div class="stat-icon" style="background: rgba(255,255,255,0.1);"><i class="fa-solid fa-coins text-warning"></i></div> -->
+
+                 <!-- HÀNG ICON + BUTTON -->
+                <div class="d-flex justify-content-between align-items-center">
+                    
+                    <!-- ICON -->
+                    <div class="stat-icon" style="background: rgba(255,255,255,0.1);">
+                        <i class="fa-solid fa-coins text-warning"></i>
+                    </div>
+
+                    <!-- BUTTON CHI TIẾT -->
+                    <a href="index.php?act=admin-report" 
+                    class="btn btn-sm btn-outline-light rounded-pill px-3">
+                        Chi tiết →
+                    </a>
+
+                </div>
                 <div class="text-white-50 small fw-bold text-uppercase mb-1 text-uppercase">Doanh thu</div>
                 <div class="fs-4 fw-bold text-warning"><?= formatCurrency($stats['revenue']) ?></div>
                 <div class="small text-white-50">Lợi nhuận gộp ước tính</div>
