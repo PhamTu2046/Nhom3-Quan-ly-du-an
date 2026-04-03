@@ -43,7 +43,7 @@
     }
 
     .lux-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold) !important;
         text-transform: uppercase;
         letter-spacing: 4px;
@@ -100,7 +100,7 @@
 
     /* --- TEXT & BUTTONS --- */
     .product-name {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 1.25rem;
         color: #6f5252;
         margin-top: 15px;

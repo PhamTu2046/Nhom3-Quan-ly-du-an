@@ -40,7 +40,7 @@ $statusLabels = [
 
     /* --- TITLES --- */
     .lux-header-title {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold);
         letter-spacing: 3px;
         text-transform: uppercase;
@@ -64,7 +64,7 @@ $statusLabels = [
     }
 
     .table thead th {
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--lux-gold) !important;
         text-transform: uppercase;
         font-size: 0.8rem;
@@ -125,7 +125,7 @@ $statusLabels = [
         border: 1px solid var(--lux-gold);
         color: var(--lux-gold);
         border-radius: 0;
-        font-family: 'Cinzel', serif;
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 0.7rem;
         letter-spacing: 1px;
         transition: 0.4s;
