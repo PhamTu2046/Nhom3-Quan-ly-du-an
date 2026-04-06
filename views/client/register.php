@@ -295,6 +295,7 @@
     <div class="page-vignette"></div>
 </div>
 
+<?php $formData = $formData ?? []; ?>
 <div class="gate-portal-container">
     <div class="register-vault animate__animated animate__fadeInUp animate-delayed-1" id="registerVault">
         <div class="vault-decor"></div>
@@ -311,46 +312,76 @@
                 <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-regular fa-user"></i>
-                        <input type="text" name="ten_dang_nhap" class="lux-input form-control shadow-none" placeholder=" " required>
-                        <label>Danh Tính Đăng Nhập *</label>
+                        <input type="text" name="ten_dang_nhap" value="<?= e($formData['ten_dang_nhap'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['ten_dang_nhap']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                        <label>Tên Đăng Nhập *</label>
+                        <?php if (!empty($errors['ten_dang_nhap'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['ten_dang_nhap'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-solid fa-key"></i>
-                        <input type="password" name="mat_khau" class="lux-input form-control shadow-none" placeholder=" " required>
-                        <label>Mã Khóa Bảo Mật *</label>
+                        <input type="password" name="mat_khau" class="lux-input form-control shadow-none <?= isset($errors['mat_khau']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                        <label>Mật khẩu *</label>
+                        <?php if (!empty($errors['mat_khau'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['mat_khau'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <div class="col-md-6 mb-3">
+                <!-- <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-regular fa-id-card"></i>
-                        <input type="text" name="ho_ten" class="lux-input form-control shadow-none" placeholder=" " required>
-                        <label>Danh Tánh Quý Khách *</label>
+                        <input type="text" name="ho_ten" value="<?= e($formData['ho_ten'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['ho_ten']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                        <label>Họ Tên *</label>
+                        <?php if (!empty($errors['ho_ten'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['ho_ten'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-6 mb-3">
                     <div class="lux-group">
-                        <i class="fa-solid fa-phone-retro"></i>
-                        <input type="tel" name="so_dien_thoai" class="lux-input form-control shadow-none" placeholder=" " required>
-                        <label>Liên Lạc Viễn Thông *</label>
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" name="so_dien_thoai" value="<?= e($formData['so_dien_thoai'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['so_dien_thoai']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                        <label>Số điện thoại *</label>
+                        <?php if (!empty($errors['so_dien_thoai'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['so_dien_thoai'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <div class="col-12 mb-3">
+                <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-regular fa-envelope"></i>
-                        <input type="email" name="email" class="lux-input form-control shadow-none" placeholder=" " required>
-                        <label>Địa Chỉ Thư Điện Tử *</label>
+                        <input type="email" name="email" value="<?= e($formData['email'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['email']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                        <label>Email *</label>
+                        <?php if (!empty($errors['email'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['email'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 
                 <div class="col-12 mb-3">
                     <div class="lux-group">
                         <i class="fa-solid fa-map-location-dot"></i>
-                        <textarea name="dia_chi" class="lux-input form-control shadow-none" rows="2" placeholder=" "></textarea>
-                        <label>Địa Chỉ Dinh Thự / Giao Hàng</label>
+                        <textarea name="dia_chi" class="lux-input form-control shadow-none <?= isset($errors['dia_chi']) ? 'is-invalid' : '' ?>" rows="2" placeholder=" "><?= e($formData['dia_chi'] ?? '') ?></textarea>
+                        <label>Địa Chỉ</label>
+                        <?php if (!empty($errors['dia_chi'])): ?>
+                            <div class="invalid-feedback d-block">
+                                <?= $errors['dia_chi'] ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

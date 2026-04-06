@@ -18,6 +18,23 @@ class AuthController
         $credential = trim($_POST['ten_dang_nhap'] ?? '');
         $password = trim($_POST['mat_khau'] ?? '');
 
+        $errors = [];
+
+        if ($credential === '') {
+            $errors['ten_dang_nhap'] = 'Tên đăng nhập hoặc email không được để trống';
+        }
+        if ($password === '') {
+            $errors['mat_khau'] = 'Mật khẩu không được để trống';
+        }
+
+        $old = ['ten_dang_nhap' => $credential];
+
+        if (!empty($errors)) {
+            $error = implode('<br>', $errors);
+            require_once './views/client/login.php';
+            return;
+        }
+
         $userModel = new UserModel();
         $user = $userModel->getUserByCredential($credential, $password);
 
@@ -54,6 +71,7 @@ class AuthController
 
         $username = trim($_POST['ten_dang_nhap'] ?? '');
         $password = trim($_POST['mat_khau'] ?? '');
+        $fullName = trim($_POST['ho_ten'] ?? '');
         $phone = trim($_POST['so_dien_thoai'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $address = trim($_POST['dia_chi'] ?? '');
@@ -61,20 +79,52 @@ class AuthController
         $errors = [];
 
         if ($username === '') {
-            $errors[] = 'Tên đăng nhập không được để trống';
+            $errors['ten_dang_nhap'] = 'Tên đăng nhập không được để trống';
+        } elseif (strlen($username) > 100) {
+            $errors['ten_dang_nhap'] = 'Tên đăng nhập tối đa 100 ký tự';
         }
+
+        if ($fullName === '') {
+            $errors['ho_ten'] = 'Họ tên không được để trống';
+        } elseif (strlen($fullName) > 100) {
+            $errors['ho_ten'] = 'Họ tên tối đa 100 ký tự';
+        }
+
         if ($password === '') {
-            $errors[] = 'Mật khẩu không được để trống';
+            $errors['mat_khau'] = 'Mật khẩu không được để trống';
+        } elseif (strlen($password) < 6) {
+            $errors['mat_khau'] = 'Mật khẩu phải có ít nhất 6 ký tự';
         }
+
         if ($email === '') {
-            $errors[] = 'Email không được để trống';
+            $errors['email'] = 'Email không được để trống';
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Email không hợp lệ';
+        } elseif (strlen($email) > 100) {
+            $errors['email'] = 'Email tối đa 100 ký tự';
+        }
+
+        if ($phone !== '' && !preg_match('/^0\d{9}$/', $phone)) {
+            $errors['so_dien_thoai'] = 'SĐT phải đúng 10 số và bắt đầu bằng 0';
+        }
+
+        if ($address !== '' && strlen($address) > 255) {
+            $errors['dia_chi'] = 'Địa chỉ tối đa 255 ký tự';
         }
 
         $userModel = new UserModel();
 
         if ($email !== '' && $userModel->getUserByEmail($email)) {
-            $errors[] = 'Email đã tồn tại trong hệ thống';
+            $errors['email'] = 'Email đã tồn tại trong hệ thống';
         }
+
+        $formData = [
+            'ten_dang_nhap' => $username,
+            'ho_ten' => $fullName,
+            'so_dien_thoai' => $phone,
+            'email' => $email,
+            'dia_chi' => $address,
+        ];
 
         if (!empty($errors)) {
             $error = implode('<br>', $errors);
