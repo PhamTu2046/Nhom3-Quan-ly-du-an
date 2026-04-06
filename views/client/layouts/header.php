@@ -31,6 +31,10 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
             overflow-x: hidden;
         }
 
+        i, .fa, .fas, .far, .fab {
+            font-family: "Font Awesome 6 Free" !important;
+        }
+
         /* --- Nền hạt lấp lánh (Animated Background) --- */
         body::before {
             content: "";
@@ -76,21 +80,26 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
             margin: 0 5px;
         }
 
-        .nav-link-lux::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 50%;
-            background: var(--lux-gold);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+        .nav-text {
+    position: relative;
+    display: inline-block;
+}
 
-        .nav-link-lux:hover::after, .nav-link-lux.active::after {
-            width: 70%;
-        }
+.nav-text::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 50%;
+    background: var(--lux-gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link-lux:hover .nav-text::after {
+    width: 70%;
+}
 
         /* --- Dropdown ổn định cho Danh mục --- */
         .dropdown-menu-lux {
@@ -200,6 +209,10 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
+.navbar-luxury {
+    position: relative;
+    z-index: 9999;
+}
     </style>
 </head>
 <body>
@@ -256,7 +269,8 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
                 <?php if (!empty($_SESSION['user'])): ?>
                     <div class="nav-item dropdown me-2">
                         <a class="nav-link nav-link-lux dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="fa-regular fa-circle-user me-1 text-gold"></i> <?= e($_SESSION['user']['name'] ?? '') ?>
+                            <i class="fa-regular fa-circle-user me-1 text-gold"></i>
+                            <span class="nav-text"><?= e($_SESSION['user']['name'] ?? '') ?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lux dropdown-menu-end">
                             <?php if (($_SESSION['user']['role'] ?? '') === 'admin'): ?>
@@ -286,7 +300,6 @@ $navCategories = $navCategories ?? (class_exists('CategoryModel') ? (new Categor
         </div>
     </div>
 </nav>
-
 <main class="main-content-wrapper container py-5 animate__animated animate__fadeIn">
     <div class="notification-area">
         <?php if ($success = getFlash('success')): ?>
