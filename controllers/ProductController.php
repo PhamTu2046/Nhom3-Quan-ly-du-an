@@ -338,6 +338,14 @@ class ProductController
         if ($categoryId <= 0) {
             $error['category'] = 'Vui lòng chọn danh mục';
         }
+        // IMAGE
+        if (!empty($_FILES['image']['name'])) {
+            $allowed = ['image/jpeg','image/png','image/webp'];
+
+            if (!in_array($_FILES['image']['type'], $allowed)) {
+                $error['image'] = "Ảnh không hợp lệ";
+            }
+        }
 
         if (!empty($error)) {
             $categories = $this->modelCategory->getAll();
@@ -408,6 +416,18 @@ class ProductController
         }
         if ($categoryId <= 0) {
             $error['category'] = 'Vui lòng chọn danh mục';
+        }
+        // IMAGE (optional)
+        if (!empty($_FILES['image']['name'])) {
+            $allowed = ['image/jpeg','image/png','image/webp'];
+
+            if (!in_array($_FILES['image']['type'], $allowed)) {
+                $error['image'] = "Ảnh không hợp lệ";
+            }
+
+            // if ($_FILES['image']['size'] > 2 * 1024 * 1024) {
+            //     $error['image'] = "Ảnh quá lớn";
+            // }
         }
 
         if (!empty($error)) {

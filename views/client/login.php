@@ -253,6 +253,30 @@
         .vault-link:hover { color: #fff; }
         .vault-link:hover::after { width: 100%; }
 
+
+        /* Fix lệch nút "Yêu cầu thẻ hội viên" */
+        .vault-link {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    padding: 10px 0;
+}
+.login-vault::before,
+.vault-decor::before,
+.vault-decor::after {
+    pointer-events: none;
+    z-index: 0;
+}
+.login-vault {
+    position: relative;
+    z-index: 5;
+}
+.page-scene-wrapper,
+.bg-image-layer,
+#particles-layer,
+.page-vignette {
+    pointer-events: none;
+}
     </style>
 </head>
 
