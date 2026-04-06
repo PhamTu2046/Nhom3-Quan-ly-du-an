@@ -392,13 +392,13 @@
                 </div>
             <?php endif; ?>
 
-            <button type="submit" class="btn btn-register">Yêu Cầu Đặc Quyền Hội Viên</button>
+            <button type="submit" class="btn btn-register">Đăng ký</button>
         </form>
         
         <div class="register-footer animate__animated animate__fadeIn animate-delayed-4">
-            <p>Quý khách đã sở hữu đặc quyền? <a href="index.php?act=login">Tiến vào Thánh Đường</a></p>
+            <p>Quý khách đã có tài khoản? <a href="index.php?act=login">Đăng nhập</a></p>
             <a href="index.php" style="opacity: 0.5; font-size: 0.65rem;">
-                <i class="fa-solid fa-arrow-left-long me-2"></i> Trở về Dinh Thự Chủ
+                <i class="fa-solid fa-arrow-left-long me-2"></i> Trở về trang chủ
             </a>
         </div>
     </div>
