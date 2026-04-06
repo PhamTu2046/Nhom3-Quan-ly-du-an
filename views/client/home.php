@@ -163,6 +163,30 @@
     }
 
     .text-gold { color: var(--lux-gold) !important; font-family: Arial, Helvetica, sans-serif; }
+
+    /* Fix cho hiện tên người dùng */
+    .navbar-luxury .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    }
+
+    .navbar-luxury .nav-link:hover {
+        color: #D4AF37 !important;
+    }
+
+    .navbar-luxury i {
+        color: #fff !important;
+    }
+    .navbar-luxury i {
+        color: var(--lux-gold) !important;
+    }
+
+    .cart-icon-wrapper i {
+        color: #0d6efd !important; /* màu xanh cart */
+    }
+
+    .navbar-luxury .fa-circle-user {
+        color: var(--lux-gold) !important;
+    }
 </style>
 
 <div class="container-fluid p-0">
