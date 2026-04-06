@@ -162,6 +162,77 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(e) {
+        let isValid = true;
+
+        // ===== INPUT =====
+        const name = document.querySelector('input[name="name"]');
+        const price = document.querySelector('input[name="price"]');
+        const category = document.querySelector('select[name="category_id"]');
+        const image = document.querySelector('input[name="image"]');
+
+        // ===== RESET ERROR =====
+        document.querySelectorAll('.error-text').forEach(el => el.remove());
+
+        // ===== VALIDATE NAME =====
+        if (name.value.trim() === '') {
+            showError(name, "Tên món không được để trống");
+            isValid = false;
+        } else if (name.value.length < 3) {
+            showError(name, "Tên món tối thiểu 3 ký tự");
+            isValid = false;
+        }
+
+        // ===== VALIDATE PRICE =====
+        if (price.value === '' || price.value <= 0) {
+            showError(price, "Giá phải > 0");
+            isValid = false;
+        }
+
+        // ===== VALIDATE CATEGORY =====
+        if (category.value === '') {
+            showError(category, "Vui lòng chọn danh mục");
+            isValid = false;
+        }
+
+        // ===== VALIDATE IMAGE =====
+        if (image.files.length > 0) {
+            const file = image.files[0];
+            const allowed = ['image/jpeg','image/png','image/webp'];
+            
+            // Kiểm tra định dạng file
+            if (!allowed.includes(file.type)) {
+                showError(image, "Chỉ cho phép JPG, PNG, WEBP");
+                isValid = false;
+            }
+            // Kiểm tra kích thước file (tối đa 2MB)
+            // if (file.size > 2 * 1024 * 1024) {
+            //     showError(image, "Ảnh tối đa 2MB");
+            //     isValid = false;
+            // }
+        }
+
+        if (!isValid) e.preventDefault();
+    });
+
+    // ===== HIỂN THỊ ERROR =====
+    function showError(input, message) {
+        const error = document.createElement("small");
+        error.className = "text-danger d-block mt-1 fw-medium small error-text";
+        error.innerText = message;
+
+        input.closest(".mb-4, .mb-0").appendChild(error);
+    }
+    // realtime remove error khi nhập
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            const wrapper = input.closest('.mb-4, .mb-0');
+            const error = wrapper.querySelector('.error-text');
+            if (error) error.remove();
+        });
+    });
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
