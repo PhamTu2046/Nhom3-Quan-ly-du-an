@@ -308,16 +308,16 @@
             <?php endif; ?>
 
             <button type="submit" class="btn btn-access">
-                Tiến Vào Thánh Đường
+                Đăng nhập
             </button>
         </form>
 
         <div class="vault-footer animate__animated animate__fadeIn animate__delay-2s">
-            <p class="footer-text">Quý khách chưa sở hữu đặc quyền truy cập?</p>
+            <p class="footer-text">Quý khách chưa có tài khoản?</p>
             <div class="d-flex flex-column gap-3">
-                <a href="index.php?act=register" class="vault-link">Yêu cầu thẻ hội viên</a>
+                <a href="index.php?act=register" class="vault-link">Tạo tài khoản mới</a>
                 <a href="index.php" class="vault-link" style="opacity: 0.6; font-size: 0.65rem;">
-                    <i class="fa-solid fa-chevron-left me-2"></i>Quay về sảnh chính
+                    <i class="fa-solid fa-chevron-left me-2"></i>Quay về trang chủ
                 </a>
             </div>
         </div>
