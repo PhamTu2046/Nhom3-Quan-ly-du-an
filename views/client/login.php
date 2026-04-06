@@ -264,6 +264,7 @@
     <div class="page-vignette"></div>
 </div>
 
+<?php $old = $old ?? []; ?>
 <div class="gate-portal-container">
     <div class="login-vault animate__animated animate__fadeIn" id="loginVault">
         <div class="vault-decor"></div>
@@ -279,15 +280,32 @@
         <form action="index.php?act=check-login" method="POST" autocomplete="off" class="animate__animated animate__fadeInUp animate__delay-1s">
             <div class="lux-group">
                 <i class="fa-regular fa-user"></i>
-                <input type="text" name="ten_dang_nhap" class="lux-input form-control shadow-none" placeholder=" " required>
-                <label>ID Hội Viên</label>
+                <input type="text" name="ten_dang_nhap" value="<?= e($old['ten_dang_nhap'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['ten_dang_nhap']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                <label>Tên đăng nhập</label>
+                </label>
+                <?php if (!empty($errors['ten_dang_nhap'])): ?>
+                    <div class="invalid-feedback d-block">
+                        <?= $errors['ten_dang_nhap'] ?>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <div class="lux-group">
                 <i class="fa-solid fa-key"></i>
-                <input type="password" name="mat_khau" class="lux-input form-control shadow-none" placeholder=" " required>
-                <label>Khóa Bảo Mật</label>
+                <input type="password" name="mat_khau" class="lux-input form-control shadow-none <?= isset($errors['mat_khau']) ? 'is-invalid' : '' ?>" placeholder=" " required>
+                <label>Mật khẩu</label>
+                <?php if (!empty($errors['mat_khau'])): ?>
+                    <div class="invalid-feedback d-block">
+                        <?= $errors['mat_khau'] ?>
+                    </div>
+                <?php endif; ?>
             </div>
+
+            <?php if (!empty($error)) : ?>
+                <div class="alert alert-danger mt-3 animate__animated animate__shakeX">
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i> <?= $error ?>
+                </div>
+            <?php endif; ?>
 
             <button type="submit" class="btn btn-access">
                 Tiến Vào Thánh Đường
