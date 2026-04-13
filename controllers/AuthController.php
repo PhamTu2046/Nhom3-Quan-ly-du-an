@@ -6,6 +6,9 @@ class AuthController
     {
         $error = getFlash('error');
         $success = getFlash('success');
+        $errors = [];
+        $old = [];
+
         require_once './views/client/login.php';
     }
 
@@ -60,6 +63,8 @@ class AuthController
     public function showRegister()
     {
         $error = getFlash('error');
+        $errors = [];
+        $formData = [];
         require './views/client/register.php';
     }
 

@@ -306,7 +306,6 @@
                 <i class="fa-regular fa-user"></i>
                 <input type="text" name="ten_dang_nhap" value="<?= e($old['ten_dang_nhap'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['ten_dang_nhap']) ? 'is-invalid' : '' ?>" placeholder=" " required>
                 <label>Tên đăng nhập</label>
-                </label>
                 <?php if (!empty($errors['ten_dang_nhap'])): ?>
                     <div class="invalid-feedback d-block">
                         <?= $errors['ten_dang_nhap'] ?>
@@ -324,6 +323,12 @@
                     </div>
                 <?php endif; ?>
             </div>
+
+            <?php if (!empty($success)) : ?>
+                <div class="alert alert-success mt-3 animate__animated animate__fadeIn">
+                    <i class="fa-solid fa-circle-check me-2"></i> <?= $success ?>
+                </div>
+            <?php endif; ?>
 
             <?php if (!empty($error)) : ?>
                 <div class="alert alert-danger mt-3 animate__animated animate__shakeX">
