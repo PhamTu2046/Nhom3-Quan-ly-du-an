@@ -243,16 +243,32 @@ class ProductController
 
         $phone = trim($_POST['phone'] ?? '');
         $address = trim($_POST['address'] ?? '');
-        if ($phone !== '' || $address !== '') {
-            $this->modelUser->updateContact($this->currentUserId(), $phone, $address);
-            $_SESSION['user']['phone'] = $phone;
-            $_SESSION['user']['address'] = $address;
+
+        if ($phone === '' || !preg_match('/^0\d{9}$/', $phone)) {
+            setFlash('error', 'Vui lòng nhập số điện thoại nhận hàng hợp lệ gồm 10 số, bắt đầu bằng 0.');
+            redirect('checkout');
         }
+
+        if ($address === '' || strlen($address) > 255) {
+            setFlash('error', 'Vui lòng nhập địa chỉ nhận hàng đầy đủ, tối đa 255 ký tự.');
+            redirect('checkout');
+        }
+
+        $this->modelUser->updateContact($this->currentUserId(), $phone, $address);
+        $_SESSION['user']['phone'] = $phone;
+        $_SESSION['user']['address'] = $address;
 
         $cartTotal = $this->calculateCartTotal($cartItems);
 
         try {
-            $this->modelOrder->createOrder($this->currentUserId(), $cartTotal, $paymentMethod, $cartItems);
+            $this->modelOrder->createOrder(
+                $this->currentUserId(),
+                $cartTotal,
+                $paymentMethod,
+                $phone,
+                $address,
+                $cartItems
+            );
             setFlash('success', 'Đặt hàng thành công. Bạn có thể theo dõi trạng thái đơn ngay bên dưới.');
             redirect('my-orders');
         } catch (Throwable $exception) {
@@ -270,6 +286,59 @@ class ProductController
         $pageTitle = 'Đơn hàng của tôi';
 
         require './views/client/orders.php';
+    }
+
+    public function cancelOrder()
+    {
+        $this->requireCustomer();
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            redirect('my-orders');
+        }
+
+        $orderId = (int) ($_POST['order_id'] ?? 0);
+        if ($orderId <= 0) {
+            setFlash('error', 'Đơn hàng không hợp lệ.');
+            redirect('my-orders');
+        }
+
+        $order = $this->modelOrder->findByIdAndUserId($orderId, $this->currentUserId());
+        if (!$order) {
+            setFlash('error', 'Không tìm thấy đơn hàng của bạn.');
+            redirect('my-orders');
+        }
+
+        if (($order['status'] ?? '') !== 'pending') {
+            setFlash('error', 'Bạn chỉ có thể hủy đơn khi đơn còn chờ xác nhận.');
+            redirect('my-orders');
+        }
+
+        $cancelReason = trim($_POST['cancel_reason'] ?? '');
+        $cancelNote = trim($_POST['cancel_note'] ?? '');
+        $allowedReasons = orderCancelReasonLabels();
+
+        if (!array_key_exists($cancelReason, $allowedReasons)) {
+            setFlash('error', 'Vui lòng chọn lý do hủy đơn.');
+            redirect('my-orders');
+        }
+
+        if ($cancelReason === 'other' && $cancelNote === '') {
+            setFlash('error', 'Vui lòng nhập lý do cụ thể khi chọn lý do khác.');
+            redirect('my-orders');
+        }
+
+        if (strlen($cancelNote) > 255) {
+            setFlash('error', 'Ghi chú hủy đơn tối đa 255 ký tự.');
+            redirect('my-orders');
+        }
+
+        if (!$this->modelOrder->cancelPendingByUser($orderId, $this->currentUserId(), $cancelReason, $cancelNote)) {
+            setFlash('error', 'Không thể hủy đơn lúc này. Vui lòng thử lại.');
+            redirect('my-orders');
+        }
+
+        setFlash('success', 'Đơn hàng đã được hủy thành công.');
+        redirect('my-orders');
     }
 
     public function dashboard()
