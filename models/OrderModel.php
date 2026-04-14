@@ -15,8 +15,8 @@ class OrderModel
 
         try {
             $stmt = $this->conn->prepare(
-                "INSERT INTO orders(user_id, total_price, status, payment_method, created_at, updated_at)
-                 VALUES(?, ?, 'pending', ?, NOW(), NOW())"
+                "INSERT INTO orders(user_id, total_price, status, payment_method, payment_status, created_at, updated_at)
+                VALUES(?, ?, 'pending', ?, 'pending', NOW(), NOW())"
             );
             $stmt->execute([$userId, $totalPrice, $paymentMethod]);
 
@@ -109,5 +109,20 @@ class OrderModel
         return (float) $this->conn->query(
             "SELECT COALESCE(SUM(total_price), 0) FROM orders WHERE status IN ('processing', 'completed')"
         )->fetchColumn();
+    }
+    public function updatePaymentStatus($orderId, $paymentStatus)
+    {
+        $stmt = $this->conn->prepare(
+            "UPDATE orders SET payment_status = ?, updated_at = NOW() WHERE id = ?"
+        );
+        $stmt->execute([$paymentStatus, $orderId]);
+    }
+    public function getLastByUser($userId)
+    {
+        $stmt = $this->conn->prepare(
+            "SELECT * FROM orders WHERE user_id = ? ORDER BY id DESC LIMIT 1"
+        );
+        $stmt->execute([$userId]);
+        return $stmt->fetch();
     }
 }
