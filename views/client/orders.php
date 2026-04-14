@@ -184,9 +184,27 @@ $statusLabels = [
                                     <td>
                                         <span class="badge border border-secondary text-secondary"><?= (int) $order['total_items'] ?> món</span>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <i class="fa-solid <?= $order['payment_method'] === 'online' ? 'fa-credit-card' : 'fa-hand-holding-dollar' ?> me-2 small"></i>
                                         <?= $order['payment_method'] === 'online' ? 'Online' : 'Tiền mặt' ?>
+                                    </td> -->
+                                    <td>
+                                        <div>
+                                            <i class="fa-solid <?= $order['payment_method'] === 'online' ? 'fa-credit-card' : 'fa-hand-holding-dollar' ?> me-2 small"></i>
+                                            <?= $order['payment_method'] === 'online' ? 'Online' : 'Tiền mặt' ?>
+                                        </div>
+
+                                        <?php if ($order['payment_method'] === 'online'): ?>
+                                            <div class="mt-1 small">
+                                                <?php if ($order['payment_status'] === 'paid'): ?>
+                                                    <span style="color: #198754;">✔ Đã thanh toán</span>
+                                                <?php elseif ($order['payment_status'] === 'failed'): ?>
+                                                    <span style="color: #dc3545;">✖ Thất bại</span>
+                                                <?php else: ?>
+                                                    <span style="color: #ffc107;">⏳ Chờ thanh toán</span>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
                                     </td>
                                     <td><span class="price-total"><?= formatCurrency($order['total_price']) ?></span></td>
                                     <td class="text-center">

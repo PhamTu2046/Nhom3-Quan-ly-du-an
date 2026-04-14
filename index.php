@@ -35,6 +35,9 @@ if (isset($_SESSION['user']) && in_array($act, ['login', 'register'], true)) {
 }
 
 match ($act) {
+    // ===== VNPAY =====
+    'vnpay_return' => (new ProductController())->vnpayReturn(),
+    
     // ===== AUTH =====
     'login' => (new AuthController())->showLogin(),
     'check-login' => (new AuthController())->login(),

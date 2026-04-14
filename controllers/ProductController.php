@@ -236,29 +236,60 @@ class ProductController
             redirect('home');
         }
 
+        // lấy phương thức thanh toán
         $paymentMethod = $_POST['payment_method'] ?? 'cod';
         if (!in_array($paymentMethod, ['cod', 'online'], true)) {
             $paymentMethod = 'cod';
         }
 
+        // cập nhật thông tin user
         $phone = trim($_POST['phone'] ?? '');
         $address = trim($_POST['address'] ?? '');
+
         if ($phone !== '' || $address !== '') {
             $this->modelUser->updateContact($this->currentUserId(), $phone, $address);
             $_SESSION['user']['phone'] = $phone;
             $_SESSION['user']['address'] = $address;
         }
 
+        // tính tổng tiền
         $cartTotal = $this->calculateCartTotal($cartItems);
 
         try {
-            $this->modelOrder->createOrder($this->currentUserId(), $cartTotal, $paymentMethod, $cartItems);
-            setFlash('success', 'Đặt hàng thành công. Bạn có thể theo dõi trạng thái đơn ngay bên dưới.');
+            // tạo đơn hàng trước
+            $this->modelOrder->createOrder(
+                $this->currentUserId(),
+                $cartTotal,
+                $paymentMethod,
+                $cartItems
+            );
+
+            // 👉 nếu là thanh toán online → sang VNPay
+            if ($paymentMethod === 'online') {
+                header("Location: payment/vnpay.php?total=" . $cartTotal);
+                exit();
+            }
+
+            // 👉 nếu là COD
+            setFlash('success', 'Đặt hàng COD thành công.');
             redirect('my-orders');
+
         } catch (Throwable $exception) {
-            setFlash('error', 'Không thể tạo đơn hàng lúc này. Vui lòng thử lại.');
+            setFlash('error', 'Không thể tạo đơn hàng. Vui lòng thử lại.');
             redirect('checkout');
         }
+    }
+    public function vnpayReturn()
+    {
+        $code = $_GET['vnp_ResponseCode'] ?? '99';
+
+        if ($code == '00') {
+            setFlash('success', 'Thanh toán thành công!');
+        } else {
+            setFlash('error', 'Thanh toán thất bại!');
+        }
+
+        redirect('my-orders');
     }
 
     public function myOrders()
