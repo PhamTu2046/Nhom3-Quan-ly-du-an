@@ -173,7 +173,7 @@
                                             };
                                         ?>
                                         <span class="badge rounded-pill <?= $badgeClass ?> shadow-none badge-soft" style="--bs-bg-opacity: .15; color: inherit;">
-                                            <i class="fa-solid fa-circle me-1" style="font-size: 6px; vertical-align: middle;"></i> <?= e($order['status']) ?>
+                                            <i class="fa-solid fa-circle me-1" style="font-size: 6px; vertical-align: middle;"></i> <?= e(orderStatusLabels()[$order['status']] ?? $order['status']) ?>
                                         </span>
                                     </td>
                                     <td class="text-end pe-4 fw-bold text-dark"><?= formatCurrency($order['total_price']) ?></td>
