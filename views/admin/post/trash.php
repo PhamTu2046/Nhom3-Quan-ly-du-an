@@ -26,15 +26,15 @@
         border: none;
     }
     .table tbody tr { transition: 0.2s; border-bottom: 1px solid #f1f5f9; }
-    .table tbody tr:hover { background-color: #fffafb; } /* Hiệu ứng hồng nhạt khi hover vào món đã xóa */
+    .table tbody tr:hover { background-color: #fffafb; }
     
     /* Thumbnail */
     .trash-thumb {
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 54px;
         object-fit: cover;
         border-radius: 10px;
-        filter: grayscale(60%); /* Làm mờ màu sắc để ám chỉ đồ cũ/xóa */
+        filter: grayscale(60%);
         opacity: 0.8;
     }
 
@@ -73,22 +73,22 @@
 <div class="container-fluid py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h2 class="page-title mb-1">Thùng rác</h2>
-            <p class="text-muted small mb-0">Nơi lưu trữ tạm thời các món ăn đã được yêu cầu xóa.</p>
+            <h2 class="page-title mb-1">Thùng rác bài viết</h2>
+            <p class="text-muted small mb-0">Nơi lưu trữ tạm thời các bài viết đã được yêu cầu xóa.</p>
         </div>
-        <a href="index.php?act=list-product" class="btn btn-back px-4 py-2 shadow-sm">
+        <a href="index.php?act=admin-posts" class="btn btn-back px-4 py-2 shadow-sm">
             <i class="fa-solid fa-chevron-left me-2"></i> Quay lại danh sách
         </a>
     </div>
 
-    <?php if (empty($products)): ?>
+    <?php if (empty($posts)): ?>
         <div class="card shadow-sm border-0">
             <div class="card-body p-5 text-center">
                 <div class="mb-3 text-muted opacity-25">
                     <i class="fa-solid fa-trash-can-arrow-up fa-4x"></i>
                 </div>
                 <h5 class="text-muted fw-normal">Thùng rác hiện đang trống.</h5>
-                <p class="small text-muted">Các món ăn bạn xóa sẽ xuất hiện tại đây.</p>
+                <p class="small text-muted">Các bài viết bạn xóa sẽ xuất hiện tại đây.</p>
             </div>
         </div>
     <?php else: ?>
@@ -101,19 +101,23 @@
                         <tr>
                             <th class="ps-4" width="80">ID</th>
                             <th width="100">Ảnh</th>
-                            <th>Tên món ăn</th>
-                            <th>Giá gốc</th>
-                            <th>Danh mục</th>
+                            <th>Tiêu đề bài viết</th>
+                            <th>Nội dung</th>
                             <th class="text-end pe-4">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($products as $item): ?>
+                        <?php foreach ($posts as $item): ?>
+                            <?php
+                                $image = !empty($item['image']) ? 'uploads/' . basename($item['image']) : 'https://placehold.co/80x54?text=No+Image';
+                                $excerpt = strip_tags($item['content'] ?? 'Chưa có nội dung mô tả...');
+                                $excerpt = mb_substr($excerpt, 0, 60, 'UTF-8') . (strlen($excerpt) > 60 ? '...' : '');
+                            ?>
                             <tr>
                                 <td class="ps-4 text-muted small">#<?= $item['id'] ?></td>
                                 <td>
                                     <?php if (!empty($item['image'])): ?>
-                                        <img src="uploads/<?= e($item['image']) ?>" class="trash-thumb shadow-sm">
+                                        <img src="<?= e($image) ?>" class="trash-thumb shadow-sm" alt="<?= e($item['title']) ?>">
                                     <?php else: ?>
                                         <div class="trash-thumb bg-light d-flex align-items-center justify-content-center">
                                             <i class="fa-solid fa-image text-muted opacity-25"></i>
@@ -121,24 +125,23 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <div class="fw-bold text-dark opacity-75"><?= e($item['name']) ?></div>
+                                    <div class="fw-bold text-dark opacity-75"><?= e($item['title']) ?></div>
                                     <div class="text-muted small italic">Chờ xử lý xóa vĩnh viễn</div>
                                 </td>
                                 <td>
-                                    <span class="fw-semibold text-secondary small"><?= number_format($item['price']) ?> đ</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-light text-muted border px-2 py-1"><?= e($item['category_name'] ?? 'Không có') ?></span>
+                                    <div class="text-muted small" style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <?= e($excerpt) ?>
+                                    </div>
                                 </td>
                                 <td class="text-end pe-4">
                                     <div class="d-flex justify-content-end gap-2">
-                                        <a href="index.php?act=restore-product&id=<?= $item['id'] ?>"
+                                        <a href="index.php?act=restore-post&id=<?= $item['id'] ?>"
                                            class="btn btn-restore btn-sm"
-                                           onclick="return confirm('Khôi phục món này về thực đơn chính?')">
+                                           onclick="return confirm('Khôi phục bài viết này về danh sách chính?')">
                                             <i class="fa-solid fa-rotate-left me-1"></i> Khôi phục
                                         </a>
 
-                                        <a href="index.php?act=force-delete-product&id=<?= $item['id'] ?>"
+                                        <a href="index.php?act=force-delete-post&id=<?= $item['id'] ?>"
                                            class="btn btn-force-delete btn-sm"
                                            onclick="return confirm('CẢNH BÁO: Hành động xóa vĩnh viễn không thể hoàn tác. Bạn chắc chắn chứ?')">
                                             <i class="fa-solid fa-fire-burner me-1"></i> Xóa hẳn
