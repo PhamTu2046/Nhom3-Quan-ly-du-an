@@ -181,7 +181,7 @@
                                 <?= e($shortContent) ?>
                             </p>
                             
-                            <a href="#" class="btn-lux-read">Đọc chi tiết <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.6rem;"></i></a>
+                            <a href="index.php?act=post-detail&id=<?= (int) $post['id'] ?>" class="btn-lux-read">Đọc chi tiết <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.6rem;"></i></a>
                         </div>
                     </div>
                 </div>
