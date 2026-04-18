@@ -21,7 +21,7 @@ session_start();
 $act = $_GET['act'] ?? 'home';
 
 // ===== ROUTE KHÔNG CẦN LOGIN =====
-$publicRoutes = ['/', 'home', 'about', 'posts', 'menu', 'product-detail', 'login', 'check-login', 'register', 'check-register', 'logout'];
+$publicRoutes = ['/', 'home', 'about', 'posts', 'menu', 'product-detail', 'post-detail', 'login', 'check-login', 'register', 'check-register', 'logout'];
 
 if (!isset($_SESSION['user']) && !in_array($act, $publicRoutes, true)) {
     setFlash('error', 'Vui lòng đăng nhập để tiếp tục.');
@@ -47,6 +47,7 @@ match ($act) {
     'home' => (new ProductController())->Home(),
     'about' => (new ProductController())->about(),
     'posts' => (new ProductController())->posts(),
+    'post-detail' => (new ProductController())->postDetail(),
     'menu' => (new ProductController())->menu(),
     'product-detail' => (new ProductController())->show(),
     'cart' => (new ProductController())->cart(),

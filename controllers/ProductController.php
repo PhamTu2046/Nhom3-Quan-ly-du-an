@@ -117,6 +117,22 @@ class ProductController
         require './views/client/posts.php';
     }
 
+    public function postDetail()
+    {
+        $id = (int) ($_GET['id'] ?? 0);
+        $post = $this->modelPost->find($id);
+
+        if (!$post) {
+            setFlash('error', 'Bài viết không tồn tại hoặc đã bị gỡ.');
+            redirect('posts');
+        }
+
+        $cartCount = isLoggedIn() && !isAdmin() ? $this->modelCart->countItems($this->currentUserId()) : 0;
+        $pageTitle = $post['title'] ?? 'Chi tiết bài viết';
+
+        require './views/client/post-detail.php';
+    }
+
     public function menu()
     {
         $keyword = trim($_GET['keyword'] ?? '');
