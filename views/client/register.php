@@ -334,7 +334,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-regular fa-id-card"></i>
                         <input type="text" name="ho_ten" value="<?= e($formData['ho_ten'] ?? '') ?>" class="lux-input form-control shadow-none <?= isset($errors['ho_ten']) ? 'is-invalid' : '' ?>" placeholder=" " required>
@@ -345,7 +345,7 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                </div> -->
+                </div>
                 <div class="col-md-6 mb-3">
                     <div class="lux-group">
                         <i class="fa-solid fa-phone"></i>
