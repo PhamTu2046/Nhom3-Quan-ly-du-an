@@ -158,6 +158,98 @@
     </form>
 </div>
 
+<script>
+    const form = document.querySelector("form");
+
+    // ===== SUBMIT VALIDATE =====
+    form.addEventListener("submit", function(e) {
+        let isValid = true;
+
+        const name = document.querySelector('input[name="name"]');
+        const price = document.querySelector('input[name="price"]');
+        const category = document.querySelector('select[name="category_id"]');
+        const image = document.querySelector('input[name="image"]');
+
+        // reset lỗi
+        document.querySelectorAll('.error-text').forEach(el => el.remove());
+
+        // ===== NAME =====
+        if (name.value.trim() === '') {
+            showError(name, "Tên không được để trống");
+            isValid = false;
+        } else if (name.value.length < 3) {
+            showError(name, "Tên tối thiểu 3 ký tự");
+            isValid = false;
+        }
+
+        // ===== PRICE =====
+        if (price.value === '' || price.value <= 0) {
+            showError(price, "Giá phải > 0");
+            isValid = false;
+        }
+
+        // ===== CATEGORY =====
+        if (category.value === '') {
+            showError(category, "Chọn danh mục");
+            isValid = false;
+        }
+
+        // ===== IMAGE (KHÔNG BẮT BUỘC) =====
+        if (image.files.length > 0) {
+            const file = image.files[0];
+            const allowed = ['image/jpeg','image/png','image/webp'];
+
+            if (!allowed.includes(file.type)) {
+                showError(image, "Chỉ JPG, PNG, WEBP");
+                isValid = false;
+            }
+
+            // if (file.size > 2 * 1024 * 1024) {
+            //     showError(image, "Ảnh tối đa 2MB");
+            //     isValid = false;
+            // }
+        }
+
+        if (!isValid) e.preventDefault();
+    });
+
+
+    // ===== REALTIME VALIDATE =====
+    document.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            const wrapper = input.closest('.mb-4, .mb-0');
+            const error = wrapper?.querySelector('.error-text');
+            if (error) error.remove();
+
+            // validate realtime luôn
+            if (input.name === 'name') {
+                if (input.value.trim().length > 0 && input.value.length < 3) {
+                    showError(input, "Tối thiểu 3 ký tự");
+                }
+            }
+
+            if (input.name === 'price') {
+                if (input.value !== '' && input.value <= 0) {
+                    showError(input, "Giá phải > 0");
+                }
+            }
+        });
+    });
+
+
+    // ===== SHOW ERROR =====
+    function showError(input, message) {
+        const wrapper = input.closest('.mb-4, .mb-0');
+        if (!wrapper) return;
+
+        const error = document.createElement("small");
+        error.className = "text-danger d-block mt-1 fw-medium error-text";
+        error.innerText = message;
+
+        wrapper.appendChild(error);
+    }
+</script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 

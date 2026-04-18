@@ -56,6 +56,7 @@ match ($act) {
     'checkout' => (new ProductController())->checkout(),
     'place-order' => (new ProductController())->placeOrder(),
     'my-orders' => (new ProductController())->myOrders(),
+    'cancel-order' => (new ProductController())->cancelOrder(),
     'profile' => (new AuthController())->profile(),
     'update-profile' => (new AuthController())->updateProfile(),
 

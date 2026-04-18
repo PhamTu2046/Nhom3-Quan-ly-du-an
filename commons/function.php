@@ -1,6 +1,5 @@
 <?php
 
-// Kết nối CSDL qua PDO
 function connectDB() {
     $host = DB_HOST;
     $port = DB_PORT;
@@ -18,7 +17,7 @@ function connectDB() {
 
         return $conn;
     } catch (PDOException $e) {
-        die("Connection failed: " . $e->getMessage());
+        die('Connection failed: ' . $e->getMessage());
     }
 }
 
@@ -51,6 +50,44 @@ function e($value) {
 
 function formatCurrency($value) {
     return number_format((float) $value, 0, ',', '.') . ' đ';
+}
+
+function orderStatusLabels() {
+    return [
+        'pending' => 'Đang xác nhận đơn',
+        'processing' => 'Đầu bếp đang làm món',
+        'completed' => 'Món đã được phục vụ',
+        'cancelled' => 'Đơn đã hủy',
+    ];
+}
+
+function orderStatusDescriptions($context = 'customer') {
+    if ($context === 'admin') {
+        return [
+            'pending' => 'Chúng tôi đang tiếp nhận và xác nhận món ăn của khách.',
+            'processing' => 'Bếp đang chuẩn bị và hoàn thiện món ăn cho khách.',
+            'completed' => 'Món ăn đã được phục vụ mang ra cho khách.',
+            'cancelled' => 'Đơn hàng này đã được hủy và không cần chế biến.',
+        ];
+    }
+
+    return [
+        'pending' => 'Chúng tôi đang tiếp nhận và xác nhận món ăn của bạn.',
+        'processing' => 'Đầu bếp đang chuẩn bị món ăn của bạn.',
+        'completed' => 'Món ăn của bạn đã được phục vụ mang ra.',
+        'cancelled' => 'Đơn hàng này đã được hủy.',
+    ];
+}
+
+function orderCancelReasonLabels() {
+    return [
+        'change_items' => 'Muốn đổi món trong đơn',
+        'apply_discount' => 'Muốn thêm hoặc thay mã giảm giá',
+        'change_address' => 'Muốn thay đổi địa chỉ nhận hàng',
+        'change_phone' => 'Muốn thay đổi số điện thoại nhận hàng',
+        'ordered_by_mistake' => 'Đặt nhầm hoặc không còn nhu cầu',
+        'other' => 'Lý do khác',
+    ];
 }
 
 function setFlash($key, $message) {
